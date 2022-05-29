@@ -25,7 +25,7 @@ public class PlayerInteraction : MonoBehaviour
         if (collision.tag == "Finish")
         {
             //Load next level
-            //Debug.Log("portal is working");
+            Debug.Log("portal is working");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         
@@ -48,8 +48,8 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (battery == true)
             {
-                powerOn.TurnOnPower(gameObject);
-                Destroy(collision.gameObject);
+                powerOn.TurnOnPower(collision.gameObject);
+              //  Destroy(collision.gameObject);
             }
         }
        

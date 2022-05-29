@@ -5,12 +5,13 @@ using UnityEngine;
 public class PowerOn : MonoBehaviour
 {
     public GameObject portalOpen;
+    //public GameObject portalClose;
 
     public void TurnOnPower(GameObject Portal)
     {
         GameObject nextLevelPortal = Instantiate(portalOpen) as GameObject;
-        Vector3 ground = transform.Find("Ground").position;
-        nextLevelPortal.transform.position = ground;
+        nextLevelPortal.transform.position = Portal.transform.position;
+
     }
 
 }
