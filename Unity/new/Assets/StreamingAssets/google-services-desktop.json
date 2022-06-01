@@ -7,6 +7,35 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:1072207620453:android:b8684c463f5170a5a7d98c",
+        "android_client_info": {
+          "package_name": "com.CastleBattle.CastleBattle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1072207620453-296klu2l5fdocegtlbuqo5stl5drsh3k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOCrCO3Tz7-d537CLn7F7UI8UiCCNhWg8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1072207620453-296klu2l5fdocegtlbuqo5stl5drsh3k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:1072207620453:android:5c9ce1f46ca7c621a7d98c",
         "android_client_info": {
           "package_name": "com.DefaultCompany.CastleBattle"
