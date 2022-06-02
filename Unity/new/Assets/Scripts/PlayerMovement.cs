@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public Transform groundCheck;
     public LayerMask groundLayer;
+    public Animator animator;
 
     private Rigidbody2D rb;
     private float horizontal;
@@ -28,6 +29,8 @@ public class PlayerMovement : MonoBehaviour
         {
             Flip();
         }
+
+        animator.SetFloat("speed", Mathf.Abs(rb.velocity.x));
     }
 
 
@@ -38,11 +41,15 @@ public class PlayerMovement : MonoBehaviour
         if (context.performed && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+
+            animator.SetBool("isJumping", true);
         }
 
         if (context.canceled && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+
+            animator.SetBool("isJumping", false);
         }
     }
 
