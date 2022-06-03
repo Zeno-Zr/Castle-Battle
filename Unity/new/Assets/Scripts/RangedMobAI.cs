@@ -13,6 +13,8 @@ public class MobAI : MonoBehaviour
     public float aggroRange = 100f;
     public float attackRange = 50f;
     public float nextWaypointDistance = 3f;
+    public GameObject projectile;
+    public float attackInterval = 5f;
 
     public Transform enemyGFX;
 
@@ -30,6 +32,7 @@ public class MobAI : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         InvokeRepeating("UpdatePath", 0f, 0.5f);
+        InvokeRepeating("FireProjectile", 0f, attackInterval);
     }
 
     void UpdatePath()
@@ -41,6 +44,14 @@ public class MobAI : MonoBehaviour
         else if (seeker.IsDone())
         {
             seeker.StartPath(rb.position, target.position, OnPathComplete);
+        }
+    }
+
+    void FireProjectile()
+    {
+        if (isInAttackRange())
+        {
+            Instantiate(projectile);
         }
     }
 
