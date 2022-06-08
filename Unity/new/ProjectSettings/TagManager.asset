@@ -8,6 +8,8 @@ TagManager:
   - Coin
   - Portal
   - Battery
+  - DropValid
+  - DropInvalid
   layers:
   - Default
   - TransparentFX
@@ -18,7 +20,7 @@ TagManager:
   - Ground
   - Player
   - Enemy
-  - 
+  - Draggable
   - 
   - 
   - 
@@ -42,6 +44,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Platform
+    uniqueID: 507963891
+    locked: 0
+  - name: UI
+    uniqueID: 3060455881
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
