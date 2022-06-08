@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     public void Jump(InputAction.CallbackContext context)
     {
         // jumpKeyWasPressed = true;
+        //animator.SetBool("isJumping", true);
 
         if (context.performed && IsGrounded())
         {
@@ -51,6 +52,8 @@ public class PlayerMovement : MonoBehaviour
 
             animator.SetBool("isJumping", false);
         }
+
+        animator.SetBool("isJumping", false);
     }
 
 
@@ -69,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(Vector2.up, ForceMode2D.Impulse);
             jumpKeyWasPressed = false;
+            animator.SetBool("isJumping", false);
         }
         */
     }
@@ -76,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
     
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.7f, groundLayer);
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
     private void Flip()
