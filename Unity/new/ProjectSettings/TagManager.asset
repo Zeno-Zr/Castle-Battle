@@ -8,8 +8,10 @@ TagManager:
   - Coin
   - Portal
   - Battery
-  - DropValid
-  - DropInvalid
+  - WeaponSlot
+  - ArmorSlot
+  - Weapon_Pistol
+  - player
   layers:
   - Default
   - TransparentFX
