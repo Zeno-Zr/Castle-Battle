@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class MobProjectileController : MonoBehaviour
 {
-    public Transform ProjectileTarget;
-    public float speed;
+    public float bulletRadius = 0.16f;
+    public LayerMask playerLayer;
+    Transform ProjectileTarget;
+    public float speed = 500f;
     Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        ProjectileTarget = (GameObject.Find("Player_armor")).transform;
 
         if(ProjectileTarget.position.x < rb.position.x)
         {
@@ -25,8 +29,11 @@ public class MobProjectileController : MonoBehaviour
         rb.velocity = new Vector2(speed, rb.velocity.y);
     }
 
-    void OnCollisionEnter(Collision collision)
+    void FixedUpdate()
     {
-        Destroy (gameObject);
+        if (Physics2D.OverlapCircle(transform.position, bulletRadius, playerLayer))
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

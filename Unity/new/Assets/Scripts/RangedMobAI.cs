@@ -5,7 +5,7 @@ using Pathfinding;
 
 namespace RangedMobAI
 {
-public class MobAI : MonoBehaviour
+public class RangedMobAI : MonoBehaviour
 {
     public Transform target;
     public LayerMask targetLayer;
@@ -20,19 +20,23 @@ public class MobAI : MonoBehaviour
 
     Path path;
     int currentWaypoint = 0;
-    //bool reachedEndOfPath = false;
+    bool reachedEndOfPath = false;
+    float attackCooldown = 0f;
 
     Seeker seeker;
     Rigidbody2D rb;
+    Transform bodytransform;
 
     // Start is called before the first frame update
     void Start()
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        bodytransform = GetComponent<Transform>();
+
 
         InvokeRepeating("UpdatePath", 0f, 0.5f);
-        InvokeRepeating("FireProjectile", 0f, attackInterval);
+        InvokeRepeating("FireProjectile", 0f, 0.5f);
     }
 
     void UpdatePath()
@@ -49,9 +53,13 @@ public class MobAI : MonoBehaviour
 
     void FireProjectile()
     {
-        if (isInAttackRange())
+        if (attackCooldown < attackInterval)
         {
-            Instantiate(projectile);
+            attackCooldown += 0.5f;
+        } else if (isInAttackRange())
+        {
+            Instantiate(projectile, bodytransform.position, bodytransform.rotation);
+            attackCooldown = 0f;
         }
     }
 
@@ -74,15 +82,15 @@ public class MobAI : MonoBehaviour
 
         if (currentWaypoint >= path.vectorPath.Count)
         {
-            //reachedEndOfPath = true;
+            reachedEndOfPath = true;
             return;
         } 
-        /*
+        
         else
         {
             reachedEndOfPath = false;
         }
-        */
+        
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         Vector2 force = direction * speed * Time.deltaTime;
