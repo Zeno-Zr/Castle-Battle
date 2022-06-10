@@ -6,44 +6,67 @@ using UnityEngine.UI;
 
 public class SwitchPart : MonoBehaviour
 {
-    [SerializeField] BodyParts[] bodyParts;
     [SerializeField] string[] labels;
-
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] BodyParts bodyParts;
+    [SerializeField] WeaponParts weaponParts;
+    
+    // for sprite swapping, use:
+    // 
+    // gameObject @@@@ = GameObject.Find("Player_armor");
+    // 
+    // @@@@.SwitchPart.SwapArmor(****)
+    // or
+    // @@@@.SwitchPart.SwapWeapon(****)
+    
+    // called during armor swap
+    public void SwapArmor(int slot_ID)
     {
-        for (int i = 0; i < bodyParts.Length; i++)
-        {
-            bodyParts[i].Init(labels);
-        }        
+        bodyParts.SwitchParts(labels, slot_ID);        
+    }
+
+    // called during weapon swap
+    public void SwapWeapon(int weaponSlot_ID)
+    {
+        weaponParts.SwitchWeapons(weaponSlot_ID);        
     }
 }
 
 [System.Serializable]
     public class BodyParts
     {
-        [SerializeField] Button button;
         [SerializeField] UnityEngine.U2D.Animation.SpriteResolver[] spriteResolver;
-        public int id;
  
         public UnityEngine.U2D.Animation.SpriteResolver[] SpriteResolver { get => spriteResolver; }
  
-        //method to init the button callback
-        public void Init(string[] labels)
-        {
-            button.onClick.AddListener(delegate { SwitchParts(labels); });
-        }
- 
         //method that are going to be triggered by the button, and it will switch the sprites of each resolver list.
-        public void SwitchParts(string[] labels)
+        public void SwitchParts(string[] labels, int id)
         {
-            id++;
             id = id % labels.Length;
  
             foreach (var item in spriteResolver)
             {
                 Debug.Log(item.GetCategory() + " " + labels[id] + " " + id);
                 item.SetCategoryAndLabel(item.GetCategory(), labels[id]);
+            }
+        }
+    }
+
+[System.Serializable]
+    public class WeaponParts
+    {
+        [SerializeField] UnityEngine.U2D.Animation.SpriteResolver[] spriteResolver;
+        [SerializeField] string[] weaponLabels;
+ 
+        public UnityEngine.U2D.Animation.SpriteResolver[] SpriteResolver { get => spriteResolver; }
+
+        public void SwitchWeapons(int wid)
+        {
+            wid = wid % weaponLabels.Length;
+
+            foreach (var item in spriteResolver)
+            {
+                Debug.Log(item.GetCategory() + " " + weaponLabels[wid] + " " + wid);
+                item.SetCategoryAndLabel(item.GetCategory(), weaponLabels[wid]);
             }
         }
     }
