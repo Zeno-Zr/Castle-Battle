@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1;
         if (instance == null)
         {
             instance = this;
