@@ -44,6 +44,7 @@ public class RangedMobAI : MonoBehaviour
         if (!isInPatrolRange() || isInAttackRange())
         {
             path = null;
+            rb.velocity = new Vector2((rb.velocity.x * 0.25f), rb.velocity.y);
         }
         else if (seeker.IsDone())
         {
