@@ -12,6 +12,7 @@ TagManager:
   - ArmorSlot
   - Weapon_Pistol
   - player
+  - ArmorHeadSlot
   layers:
   - Default
   - TransparentFX
