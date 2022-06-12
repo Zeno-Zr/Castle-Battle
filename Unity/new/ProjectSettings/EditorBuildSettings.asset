@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Level 2.unity
     guid: 3f36f60edb6d0074caa34b997a9acd78
   - enabled: 1
-    path: Assets/Scenes/TestNewAssets.unity
+    path: Assets/Scenes/ScifiLevel2.unity
     guid: 325e246298a65934993122e53298db58
   - enabled: 1
     path: Assets/Scenes/End.unity

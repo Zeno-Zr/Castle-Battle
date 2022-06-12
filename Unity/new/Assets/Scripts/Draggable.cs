@@ -15,18 +15,10 @@ public class Draggable : MonoBehaviour
     private System.Nullable<Vector3> _movementDestination;
 
     [SerializeField] private Collider2D WeaponSlot;
-    /*
-     [SerializeField] private GameObject ArmorHeadSlot;
-     [SerializeField] private GameObject ArmorBodySlot;
-     [SerializeField] private GameObject ArmorFeetSlot;
-    */
+    [SerializeField] private GameObject ArmorSlot;
 
     private bool WeaponSlotHasItems = false;
-    /*
-    private bool ArmorHeadSlotHasItems = false; 
-    private bool ArmorBodySlotHasItems = false; 
-    private bool ArmorFeetSlotHasItems = false; 
-    */
+  //  private bool ArmorSlotHasItems = false; 
 
 
 
@@ -67,6 +59,7 @@ public class Draggable : MonoBehaviour
                 if (!WeaponSlot.IsTouching(_collider))
                 {
                     WeaponSlotHasItems = false;
+                    //TODO: function to remove weapon's stats
                 }
             }
             else
@@ -93,13 +86,12 @@ public class Draggable : MonoBehaviour
         {
             _movementDestination = slots.transform.position;
             WeaponSlotHasItems = true;
+            //TODO: function to call to implement weapon's stats
         }
-        else if (!slots.CompareTag("player"))
+        else if (!slots.CompareTag("player") && !slots.CompareTag("Platform"))
         {
             _movementDestination = LastPosition;
         }
-
-
     }
-
+        
 }
