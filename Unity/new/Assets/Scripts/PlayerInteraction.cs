@@ -12,19 +12,11 @@ public class PlayerInteraction : MonoBehaviour
     public Text scoreText;
     public PowerOn powerOn;
 
-    //private Rigidbody2D rb;
 
-    void Start()
-    {
-        // rb = GetComponent<Rigidbody2D>();
-    }
-
-    void Update()
-    {
-        
-    }
-
-
+    /*
+     * For items that will trigger upon touching the player. 
+     * Player does not need to click the interact button to interact with it
+     */
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Player dies if player collides with a trigger collider with the Death tag
@@ -33,16 +25,6 @@ public class PlayerInteraction : MonoBehaviour
             //Restart the level
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-
-        /*
-        //Player to proceed to next level if player collides with a trigger collider with the Finish tag
-        if (collision.tag == "Finish")
-        {
-            //Load next level
-            Debug.Log("portal is working");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-        */
 
         //If player collide with a trigger collider with the Coin tag, add 100 to score and destroy the coin
         if (collision.tag == "Coin")
@@ -60,13 +42,10 @@ public class PlayerInteraction : MonoBehaviour
         }
 
         //If player collide with the portal, and player has the battery, spawns the portal
-        if (collision.tag == "Portal")
+        if (collision.tag == "Portal" && battery == true)
         {
-            if (battery == true)
-            {
-                powerOn.TurnOnPower(collision.gameObject);
-                //  Destroy(collision.gameObject);
-            }
+            // puts down a working portal in the same spot as the unpowered portal
+            powerOn.TurnOnPower(collision.gameObject);
         }
     }
 }

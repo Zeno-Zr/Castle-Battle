@@ -7,23 +7,18 @@ public class Draggable : MonoBehaviour
     public bool IsDragging;
     public Vector3 LastPosition;
 
-
     private Collider2D _collider;
     private DragController _dragController;
 
     private float _movementTime = 15f;
     private System.Nullable<Vector3> _movementDestination;
+    [SerializeField] private Vector3 _offset = new Vector3(-0.4f, 0, 0);
 
     [SerializeField] private Collider2D WeaponSlot;
-    [SerializeField] private GameObject ArmorSlot;
+    [SerializeField] private Collider2D ArmorSlot;
 
     private bool WeaponSlotHasItems = false;
-  //  private bool ArmorSlotHasItems = false; 
-
-
-
-
-
+    private bool ArmorSlotHasItems = false; 
 
     void Start()
     {
@@ -33,15 +28,22 @@ public class Draggable : MonoBehaviour
 
     void Update()
     {
+        // moves the equipped item in sync with the slot
         if (WeaponSlotHasItems && WeaponSlot.IsTouching(_collider))
         {
-            transform.position = WeaponSlot.transform.position;
+            transform.position = WeaponSlot.transform.position + _offset; 
         }
+
+        // moves the equipped item in sync with the slot
+        if (ArmorSlotHasItems && ArmorSlot.IsTouching(_collider))
+        {
+            transform.position = ArmorSlot.transform.position + _offset; 
+        }
+
     }
 
     void FixedUpdate()
     {
-
         if (_movementDestination.HasValue)
         {
             if (IsDragging)
@@ -56,19 +58,27 @@ public class Draggable : MonoBehaviour
                 gameObject.layer = Layer.Default;
                 _movementDestination = null;
 
+                // checks if the weapon is still equipped. If not, stops weapon from following Weaponslot
                 if (!WeaponSlot.IsTouching(_collider))
                 {
                     WeaponSlotHasItems = false;
                     //TODO: function to remove weapon's stats
+                    Debug.Log("remove weapon stats");
                 }
+                // checks if the armor is still equipped. If not, stops armor from following Armorslot
+                else if (!ArmorSlot.IsTouching(_collider))
+                {
+                    ArmorSlotHasItems = false;
+                    //TODO: function to remove armor's stats
+                    Debug.Log("remove armor stats");
+                }
+
+
             }
             else
             {
                 transform.position = Vector3.Lerp(transform.position, _movementDestination.Value, _movementTime * Time.fixedDeltaTime);
             }
-
-
-
         }
     }
 
@@ -84,14 +94,25 @@ public class Draggable : MonoBehaviour
 
         if (!WeaponSlotHasItems && slots.CompareTag("WeaponSlot") && _collider.CompareTag("Weapon_Pistol"))
         {
-            _movementDestination = slots.transform.position;
+            _movementDestination = slots.transform.position + _offset;
             WeaponSlotHasItems = true;
             //TODO: function to call to implement weapon's stats
+            Debug.Log("add weapon stats");
+        }
+        else if (!ArmorSlotHasItems && slots.CompareTag("ArmorSlot") && _collider.CompareTag("Weapon_Pistol"))
+        {
+            _movementDestination = slots.transform.position + _offset;
+            ArmorSlotHasItems = true;
+            //TODO: function to call to implement armor's stats
+            Debug.Log("add armor stats");
         }
         else if (!slots.CompareTag("player") && !slots.CompareTag("Platform"))
         {
             _movementDestination = LastPosition;
         }
     }
+
+
+    //ontriggerexit2d for checking if object left the collider?
         
 }
