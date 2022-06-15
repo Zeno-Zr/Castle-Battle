@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 30f28a9a0999af5478ede64de4f96670
+guid: b827a46c82716f048909ba1c76625982
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -113,18 +113,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: iPhone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -140,7 +128,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dirt_16x17_0
+      name: sandcrystal_16x16_0
       rect:
         serializedVersion: 2
         x: 0
@@ -154,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec471ed1136f2c64a9d9ea5ec66c8d34
-      internalID: -1338948511
+      spriteID: e7aa61ae967311241a5328ddd9b4f03d
+      internalID: 1783761383
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dirt_16x17_1
+      name: sandcrystal_16x16_1
       rect:
         serializedVersion: 2
         x: 16
@@ -175,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 630855f7c120a724a9fac8e68c38f5f4
-      internalID: 623460584
+      spriteID: bb9042f8e4af1e941a981bd280412fbc
+      internalID: 1582867492
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dirt_16x17_2
+      name: sandcrystal_16x16_2
       rect:
         serializedVersion: 2
         x: 32
@@ -196,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d16cc320649928a4d8de193eb67e7995
-      internalID: -775378995
+      spriteID: f37d54ce7dddc2f4e89b1d5dc8582236
+      internalID: 1556364894
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dirt_16x17_3
+      name: sandcrystal_16x16_3
       rect:
         serializedVersion: 2
         x: 48
@@ -217,56 +205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4938a6dddee77344d917105a366f7e06
-      internalID: -2074108213
+      spriteID: fcc200104bff7a64ea0bbfc9964dda29
+      internalID: -1600747064
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dirt_16x17_4
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6e8312d3a1e93c54ab858924ea31543f
-      internalID: -927073880
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dirt_16x17_5
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 410a0004d95d4844c80af744b6d8d2bb
-      internalID: 150525918
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dirt_16x17_6
+      name: sandcrystal_16x16_4
       rect:
         serializedVersion: 2
         x: 0
@@ -280,14 +226,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8f205f5a692b3b40b35bb6fd714a7e5
-      internalID: -1609712245
+      spriteID: 51fcaccc0f5cbc94aacc7173de2a54d4
+      internalID: -849101194
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dirt_16x17_7
+      name: sandcrystal_16x16_5
       rect:
         serializedVersion: 2
         x: 16
@@ -301,14 +247,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edc86b0746f1d8a42aefdf8a11e5ed5f
-      internalID: -708411351
+      spriteID: c44bad434a742c747be93064567ddabc
+      internalID: -781663738
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dirt_16x17_8
+      name: sandcrystal_16x16_6
       rect:
         serializedVersion: 2
         x: 32
@@ -322,14 +268,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a19a46493f651e84cafd83c49fc3e759
-      internalID: -244289420
+      spriteID: f1dd44e36e8928541bcecf2cae1f0998
+      internalID: 742807210
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dirt_16x17_9
+      name: sandcrystal_16x16_7
       rect:
         serializedVersion: 2
         x: 48
@@ -343,155 +289,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6172ee58cbfbbf040b0d66dcb78c13cd
-      internalID: 1642643321
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dirt_16x17_10
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2fd22d0ac41345849be7bcb4255a888d
-      internalID: -3495
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dirt_16x17_11
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 47449518857042045bf911298e422cab
-      internalID: -232972147
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dirt_16x17_12
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 170300128580ebb4098f3398f1674597
-      internalID: -96335646
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dirt_16x17_13
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8553ea8df2a5690409c498d2b3e6ddcb
-      internalID: -2127403644
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dirt_16x17_14
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0a22076db668eac47bb1aee48fb304fe
-      internalID: -796386208
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dirt_16x17_15
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3db2002dc91b06d4eb177f3ace2ea854
-      internalID: 1255887665
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dirt_16x17_16
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7a298d10e35b10747b78ddd15c76b855
-      internalID: -596035717
+      spriteID: 0f2afde002ea75a499f6e87858a01be4
+      internalID: 1221064368
       vertices: []
       indices: 
       edges: []
@@ -507,23 +306,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      dirt_16x17_0: -1338948511
-      dirt_16x17_2: -775378995
-      dirt_16x17_15: 1255887665
-      dirt_16x17_7: -708411351
-      dirt_16x17_8: -244289420
-      dirt_16x17_16: -596035717
-      dirt_16x17_11: -232972147
-      dirt_16x17_4: -927073880
-      dirt_16x17_6: -1609712245
-      dirt_16x17_3: -2074108213
-      dirt_16x17_12: -96335646
-      dirt_16x17_1: 623460584
-      dirt_16x17_10: -3495
-      dirt_16x17_9: 1642643321
-      dirt_16x17_13: -2127403644
-      dirt_16x17_14: -796386208
-      dirt_16x17_5: 150525918
+      sandcrystal_16x16_3: -1600747064
+      sandcrystal_16x16_2: 1556364894
+      sandcrystal_16x16_5: -781663738
+      sandcrystal_16x16_1: 1582867492
+      sandcrystal_16x16_4: -849101194
+      sandcrystal_16x16_0: 1783761383
+      sandcrystal_16x16_7: 1221064368
+      sandcrystal_16x16_6: 742807210
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
