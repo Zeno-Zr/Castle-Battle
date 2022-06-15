@@ -133,17 +133,38 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 16
-        width: 31
+        width: 19
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 21, y: 0, z: 1, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 4e73683449dd3524d8d9e4a3c3bd2c86
       internalID: 1813914005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sci-fi_laser_1
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 17
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 1, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23e6c94219e251848930a09b94a645e1
+      internalID: -1251368622
       vertices: []
       indices: 
       edges: []
@@ -160,6 +181,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       sci-fi_laser_0: 1813914005
+      sci-fi_laser_1: -1251368622
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
