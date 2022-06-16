@@ -18,6 +18,7 @@ TagManager:
   - Armor_Dodge
   - Armor_Knight
   - Armor_Strong
+  - Weapon_Rifle
   layers:
   - Default
   - TransparentFX
