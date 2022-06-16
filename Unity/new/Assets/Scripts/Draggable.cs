@@ -1,6 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+[RequireComponent(typeof(BoxCollider2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 
 public class Draggable : MonoBehaviour
 {
@@ -18,8 +19,13 @@ public class Draggable : MonoBehaviour
     [SerializeField] private Collider2D ArmorSlot;
 
     private bool WeaponSlotHasItems = false;
-    private bool ArmorSlotHasItems = false; 
+    private bool ArmorSlotHasItems = false;
 
+    private void Reset()
+    {
+        GetComponent<BoxCollider2D>().isTrigger = true;
+        GetComponent<Rigidbody2D>().isKinematic = true;
+    }
     void Start()
     {
         _collider = GetComponent<Collider2D>();
@@ -31,13 +37,13 @@ public class Draggable : MonoBehaviour
         // moves the equipped item in sync with the slot
         if (WeaponSlotHasItems && WeaponSlot.IsTouching(_collider))
         {
-            transform.position = WeaponSlot.transform.position + _offset; 
+            transform.position = WeaponSlot.transform.position + _offset;
         }
 
         // moves the equipped item in sync with the slot
         if (ArmorSlotHasItems && ArmorSlot.IsTouching(_collider))
         {
-            transform.position = ArmorSlot.transform.position + _offset; 
+            transform.position = ArmorSlot.transform.position + _offset;
         }
 
     }
@@ -66,7 +72,7 @@ public class Draggable : MonoBehaviour
                     Debug.Log("remove weapon stats");
                 }
                 // checks if the armor is still equipped. If not, stops armor from following Armorslot
-                else if (!ArmorSlot.IsTouching(_collider))
+                if (!ArmorSlot.IsTouching(_collider))
                 {
                     ArmorSlotHasItems = false;
                     //TODO: function to remove armor's stats
@@ -92,19 +98,41 @@ public class Draggable : MonoBehaviour
             transform.position -= diff;
         }
 
-        if (!WeaponSlotHasItems && slots.CompareTag("WeaponSlot") && _collider.CompareTag("Weapon_Pistol"))
+        if (!WeaponSlotHasItems && slots.CompareTag("WeaponSlot"))
         {
-            _movementDestination = slots.transform.position + _offset;
-            WeaponSlotHasItems = true;
-            //TODO: function to call to implement weapon's stats
-            Debug.Log("add weapon stats");
+            switch (_collider.tag)
+            {
+                case "Weapon_Pistol":
+
+                    _movementDestination = slots.transform.position + _offset;
+                    WeaponSlotHasItems = true;
+                    //TODO: function to call to implement weapon's stats
+                    Debug.Log("add weapon stats");
+                    break;
+
+                default:
+                    break;
+
+            }
         }
-        else if (!ArmorSlotHasItems && slots.CompareTag("ArmorSlot") && _collider.CompareTag("Weapon_Pistol"))
+        else if (!ArmorSlotHasItems && slots.CompareTag("ArmorSlot"))
         {
-            _movementDestination = slots.transform.position + _offset;
-            ArmorSlotHasItems = true;
-            //TODO: function to call to implement armor's stats
-            Debug.Log("add armor stats");
+            switch (_collider.tag)
+            {
+                case "Armor_Basic":
+                case "Armor_Dodge":
+                case "Armor_Knight":
+                case "Armor_Strong":
+
+                    _movementDestination = slots.transform.position + _offset;
+                    ArmorSlotHasItems = true;
+                    //TODO: function to call to implement armor's stats
+                    Debug.Log("add armor stats");
+                    break;
+
+                default:
+                    break;
+            }
         }
         else if (!slots.CompareTag("player") && !slots.CompareTag("Platform"))
         {
@@ -114,5 +142,5 @@ public class Draggable : MonoBehaviour
 
 
     //ontriggerexit2d for checking if object left the collider?
-        
+
 }
