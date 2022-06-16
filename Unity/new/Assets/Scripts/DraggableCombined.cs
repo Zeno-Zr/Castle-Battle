@@ -93,6 +93,7 @@ public class DraggableCombined : MonoBehaviour
             slots.GetComponent<DraggableCombined>().IsInsideArmorSlot
             )
         {
+            Debug.Log("1111");
             _movementDestination = LastPosition;
             return;
         }
@@ -104,7 +105,7 @@ public class DraggableCombined : MonoBehaviour
             slots.GetComponent<DraggableCombined>().IsInsideWeaponSlot
             )
         {
-            Debug.Log("AAAA");
+            Debug.Log("2222");
             _movementDestination = LastPosition;
             return;
         }
@@ -114,6 +115,7 @@ public class DraggableCombined : MonoBehaviour
         {
             if (slots.CompareTag("ArmorSlot"))
             {
+                Debug.Log("3333a");
                 _movementDestination = LastPosition;
                 return;
             } 
@@ -125,6 +127,7 @@ public class DraggableCombined : MonoBehaviour
             slots.GetComponent<DraggableCombined>().IsInsideArmorSlot
             )
             {
+                Debug.Log("3333b");
                 _movementDestination = LastPosition;
                 return;
             }
@@ -135,6 +138,7 @@ public class DraggableCombined : MonoBehaviour
         {
             if (slots.CompareTag("WeaponSlot"))
             {
+                Debug.Log("4444a");
                 _movementDestination = LastPosition;
                 return;
             }
@@ -144,6 +148,7 @@ public class DraggableCombined : MonoBehaviour
             slots.GetComponent<DraggableCombined>().IsInsideWeaponSlot
             )
             {
+                Debug.Log("4444b");
                 _movementDestination = LastPosition;
                 return;
             }       
