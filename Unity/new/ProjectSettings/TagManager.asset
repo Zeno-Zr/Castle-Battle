@@ -13,6 +13,11 @@ TagManager:
   - Weapon_Pistol
   - player
   - Platform
+  - ArmorHeadSlot
+  - Armor_Basic
+  - Armor_Dodge
+  - Armor_Knight
+  - Armor_Strong
   layers:
   - Default
   - TransparentFX
