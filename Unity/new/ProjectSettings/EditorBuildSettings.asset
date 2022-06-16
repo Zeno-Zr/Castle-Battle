@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/LoginRegister.unity
     guid: d3c095d7e7b30644c925998a0b5842a5
   - enabled: 1
+    path: Assets/Scenes/FriendsAndAchievements.unity
+    guid: a67ac88aec830554bac285a035eebae2
+  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
   - enabled: 1

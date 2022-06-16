@@ -4,15 +4,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Firebase;
 using Firebase.Auth;
+using Firebase.Database;
 using TMPro;
 
-public class AuthManager : MonoBehaviour
+public class FirebaseManager : MonoBehaviour
 {
     //Firebase variables
     [Header("Firebase")]
     public DependencyStatus dependencyStatus;
     public FirebaseAuth auth;
     public FirebaseUser User;
+    public DatabaseReference DBreference;
 
     //login variables
     [Header("Login")]
@@ -51,6 +53,17 @@ public class AuthManager : MonoBehaviour
         Debug.Log("Setting up Firebase Auth");
         //Set the authentication instance object
         auth = FirebaseAuth.DefaultInstance;
+        DBreference = FirebaseDatabase.DefaultInstance.RootReference;
+    }
+
+    public void ClearLoginRegisterFeilds()
+    {
+        emailLoginField.text = "";
+        passwordLoginField.text = "";
+        usernameRegisterField.text = "";
+        emailRegisterField.text = "";
+        passwordRegisterField = "";
+        passwordRegisterVerifyField = "";
     }
 
     //Function for the login button
@@ -64,6 +77,13 @@ public class AuthManager : MonoBehaviour
     public void RegisterButton()
     {
         StartCoroutine(Register(emailRegisterField.text, passwordRegisterField.text, usernameRegisterField.text));
+    }
+
+    public void SignOutButton()
+    {
+        auth.SignOut();
+        SceneManager.LoadScene(0);
+        ClearLoginRegisterFeilds();
     }
 
     private IEnumerator Login(string _email, string _password)
@@ -108,7 +128,9 @@ public class AuthManager : MonoBehaviour
             warningLoginText.text = "";
             confirmLoginText.text = "Logged In";
 
-            SceneManager.LoadScene(1);
+            yield return new WaitForSeconds(1);
+
+            SceneManager.LoadScene(2);
         }
     }
 

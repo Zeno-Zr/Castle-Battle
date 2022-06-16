@@ -14,6 +14,12 @@ public class Menu : MonoBehaviour
     public void MainMenuButton()
     {
         //Load the main menu scene
+        SceneManager.LoadScene(2);
+    }
+
+    public void FriendsAndAchievements()
+    {
+        //Load the friends and achievements scene
         SceneManager.LoadScene(1);
     }
 }
