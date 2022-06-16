@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class DragController : MonoBehaviour
 {
-    public Draggable LastDragged => _lastDragged;
+    public DraggableCombined LastDragged => _lastDragged;
 
     private bool _isDragActive = false;
     private Vector2 _screenPosition;
     private Vector3 _worldPosition;
-    private Draggable _lastDragged;
+    private DraggableCombined _lastDragged;
 
     void Awake()
     {
@@ -48,7 +48,7 @@ public class DragController : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(_worldPosition, Vector2.zero);
             if (hit.collider != null)
             {
-                Draggable draggable = hit.transform.gameObject.GetComponent<Draggable>();
+                DraggableCombined draggable = hit.transform.gameObject.GetComponent<DraggableCombined>();
                 if (draggable != null)
                 {
                     _lastDragged = draggable;
