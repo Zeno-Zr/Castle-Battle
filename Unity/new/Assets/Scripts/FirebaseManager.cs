@@ -11,10 +11,11 @@ public class FirebaseManager : MonoBehaviour
 {
     //Firebase variables
     [Header("Firebase")]
-    public DependencyStatus dependencyStatus;
-    public FirebaseAuth auth;
-    public FirebaseUser User;
-    public DatabaseReference DBreference;
+    public static DependencyStatus dependencyStatus;
+    public static FirebaseAuth auth;
+    public static FirebaseUser User;
+    public static DatabaseReference DBreference;
+    public static string[] friendsList;
 
     //login variables
     [Header("Login")]
@@ -30,6 +31,16 @@ public class FirebaseManager : MonoBehaviour
     public TMP_InputField passwordRegisterField;
     public TMP_InputField passwordRegisterVerifyField;
     public TMP_Text warningRegisterText;
+
+    //User data variables
+    [Header("UserData")]
+    public TMP_InputField usernameField;
+    public TMP_InputField scoreField;
+    public GameObject scoreElement;
+    public Transform scoreboardContent;
+
+    [Header("Friends")]
+    public TMP_InputField friendsUIDField;
 
     private void Awake()
     {
@@ -79,11 +90,49 @@ public class FirebaseManager : MonoBehaviour
         StartCoroutine(Register(emailRegisterField.text, passwordRegisterField.text, usernameRegisterField.text));
     }
 
+    //Function for the add friends button
+    public void AddFriendsButton()
+    {
+        string AddedFriendID = friendsUIDField.text;
+        bool FriendAlreadyAdded = false;
+        for (int s = 0; s < friendsList.Length; s++)
+        {
+            if (AddedFriendID == friendsList[s])
+            {
+                FriendAlreadyAdded = true;
+            }
+        }
+        if (FriendAlreadyAdded)
+        {
+            Debug.Log("Friend already exsist in list");
+        }
+        else
+        {
+            string[] AppendedFriendsList = new string[friendsList.Length + 1];
+            for (int r = 0; r < friendsList.Length; r++)
+            {
+                AppendedFriendsList[r] = friendsList[r];
+            }
+            AppendedFriendsList[friendsList.Length] = AddedFriendID;
+            StartCoroutine(UpdateFriendsList(AppendedFriendsList));
+            Debug.Log("Friend successfully added");
+        }
+    }
+
     public void SignOutButton()
     {
         auth.SignOut();
+        Debug.Log("User signed out");
         SceneManager.LoadScene(0);
-        ClearLoginRegisterFeilds();
+        //ClearLoginRegisterFeilds();
+    }
+
+    public void SaveDataButton()
+    {
+        StartCoroutine(UpdateUsernameAuth(usernameField.text));
+        StartCoroutine(UpdateUsernameDatabase(usernameField.text));
+        
+        StartCoroutine(UpdateScore(int.Parse(scoreField.text)));
     }
 
     private IEnumerator Login(string _email, string _password)
@@ -210,6 +259,74 @@ public class FirebaseManager : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    private IEnumerator UpdateUsernameAuth(string _username)
+    {
+        //Create a user profile and set the username
+        UserProfile profile = new UserProfile { DisplayName = _username };
+
+        //Update user profile passing the profile with the username
+        var ProfileTask = User.UpdateUserProfileAsync(profile);
+        //Wait until completion
+        yield return new WaitUntil(predicate: () => ProfileTask.IsCompleted);
+
+        if (ProfileTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {ProfileTask.Exception}");
+        }
+        else
+        {
+            Debug.Log("Auth username updated");
+        }
+    }
+
+    private IEnumerator UpdateUsernameDatabase(string _username)
+    {
+        var DBTask = DBreference.Child("users").Child(User.UserId).Child("username").SetValueAsync(_username);
+
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else
+        {
+            Debug.Log("Database username updated");
+        }
+    }
+
+    private IEnumerator UpdateFriendsList(string[] friends)
+    {
+        var DBTask = DBreference.Child("users").Child(User.UserId).Child("friends").SetValueAsync(friends);
+
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else
+        {
+            Debug.Log("Friend list updated");
+        }
+    }
+
+    private IEnumerator UpdateScore(int _score)
+    {
+        var DBTask = DBreference.Child("users").Child(User.UserId).Child("score").SetValueAsync(_score);
+
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else
+        {
+            Debug.Log("Score updated");
         }
     }
 }
