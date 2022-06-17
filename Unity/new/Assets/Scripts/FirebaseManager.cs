@@ -62,8 +62,8 @@ public class FirebaseManager : MonoBehaviour
         passwordLoginField.text = "";
         usernameRegisterField.text = "";
         emailRegisterField.text = "";
-        passwordRegisterField = "";
-        passwordRegisterVerifyField = "";
+        passwordRegisterField.text = "";
+        passwordRegisterVerifyField.text = "";
     }
 
     //Function for the login button
