@@ -6,6 +6,7 @@ using Firebase;
 using Firebase.Auth;
 using Firebase.Database;
 using TMPro;
+using System.Linq;
 
 public class FirebaseManager : MonoBehaviour
 {
@@ -34,8 +35,9 @@ public class FirebaseManager : MonoBehaviour
 
     //User data variables
     [Header("UserData")]
+    public TMP_Text usernameDisplayField;
     public TMP_InputField usernameField;
-    public TMP_InputField scoreField;
+    public TMP_Text scoreField;
     public GameObject scoreElement;
     public Transform scoreboardContent;
 
@@ -104,7 +106,7 @@ public class FirebaseManager : MonoBehaviour
         }
         if (FriendAlreadyAdded)
         {
-            Debug.Log("Friend already exsist in list");
+            Debug.Log("Friend already present in list");
         }
         else
         {
@@ -133,6 +135,12 @@ public class FirebaseManager : MonoBehaviour
         StartCoroutine(UpdateUsernameDatabase(usernameField.text));
         
         StartCoroutine(UpdateScore(int.Parse(scoreField.text)));
+    }
+
+    public void LoadFriendsSceneButton()
+    {
+        StartCoroutine(LoadUserData());
+        StartCoroutine(LoadScoreboardData());
     }
 
     private IEnumerator Login(string _email, string _password)
@@ -329,4 +337,64 @@ public class FirebaseManager : MonoBehaviour
             Debug.Log("Score updated");
         }
     }
+
+    private IEnumerator LoadUserData()
+    {
+        var DBTask = DBreference.Child("users").Child(User.UserId).GetValueAsync();
+
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else if (DBTask.Result.Value == null)
+        {
+            //No data exists yet
+            scoreField.text = "0";
+        }
+        else
+        {
+            //Data has been retrieved
+            DataSnapshot snapshot = DBTask.Result;
+
+            scoreField.text = snapshot.Child("score").Value.ToString();
+        }
+        usernameDisplayField.text = User.DisplayName;
+    }
+
+    private IEnumerator LoadScoreboardData()
+    {
+        var DBTask = DBreference.Child("users").OrderByChild("score").GetValueAsync();
+
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else
+        {
+            //Data has been retrieved
+            DataSnapshot snapshot = DBTask.Result;
+
+            //Destroy existing scoreboard elements
+            foreach (Transform child in scoreboardContent.transform)
+            {
+                Destroy(child.gameObject);
+            }
+
+            //Create new scoreboard elements
+            foreach (DataSnapshot childSnapshot in snapshot.Children.Reverse<DataSnapshot>())
+            {
+                string username = childSnapshot.Child("username").Value.ToString();
+                int score = int.Parse(childSnapshot.Child("score").Value.ToString());
+
+                GameObject scoreboardElement = Instantiate(scoreElement, scoreboardContent);
+                scoreboardElement.GetComponent<ScoreElement>().NewScoreElement(username, score);
+            }
+        }
+    }
+
+    //still requires: remove friends, friends display, feeding score data
 }
