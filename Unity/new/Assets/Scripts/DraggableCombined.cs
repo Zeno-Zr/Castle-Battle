@@ -40,11 +40,18 @@ public class DraggableCombined : MonoBehaviour
     {
         /*
         // moves the equipped item in sync with the slot
-        if (ArmorSlot.GetComponent<ArmorSlot>().ArmorSlotHasItems && ArmorSlot.GetComponent<Collider2D>().IsTouching(_collider))
+        if (ArmorSlot.GetComponent<ArmorSlot>().HasAnArmorItem && ArmorSlot.GetComponent<Collider2D>().IsTouching(_collider))
         {
-            transform.position = ArmorSlot.transform.position + _offset;
+            transform.position = ArmorSlot.transform.position + armor_offset;
+        }
+
+        // moves the equipped item in sync with the slot
+        if (WeaponSlot.GetComponent<WeaponSlot>().HasAWeaponItem && ArmorSlot.GetComponent<Collider2D>().IsTouching(_collider))
+        {
+            transform.position = ArmorSlot.transform.position + weapon_offset;
         }
         */
+
         if (IsInsideArmorSlot && ArmorSlot.GetComponent<Collider2D>().IsTouching(_collider))
         {
             transform.position = ArmorSlot.transform.position + armor_offset;
@@ -83,15 +90,21 @@ public class DraggableCombined : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D slots)
     {
-        //  if (ArmorSlot.GetComponent<ArmorSlot>().ArmorSlotHasItems && 
+        Debug.Log(slots.tag);
         // checking if the armor slot already has armor equipped (for armor)
         if (
-            (slots.CompareTag("Armor_Basic") ||
-            slots.CompareTag("Armor_Dodge") ||
-            slots.CompareTag("Armor_Knight") ||
-            slots.CompareTag("Armor_Strong")) &&
+            ( slots.CompareTag("Armor_Basic") ||slots.CompareTag("Armor_Dodge") || slots.CompareTag("Armor_Knight") || slots.CompareTag("Armor_Strong") ) && 
             slots.GetComponent<DraggableCombined>().IsInsideArmorSlot
             )
+        {
+            Debug.Log("1111");
+            _movementDestination = LastPosition;
+            return;
+        }
+
+        /*
+
+        if (slots.GetComponent<ArmorSlot>().HasAnArmorItem)
         {
             Debug.Log("1111");
             _movementDestination = LastPosition;
@@ -101,7 +114,7 @@ public class DraggableCombined : MonoBehaviour
         // checking if the weapon slot already has armor equipped (for weapons)
         if (
             (slots.CompareTag("Weapon_Pistol") || 
-            slots.CompareTag("Weapon_Rifle")) &&
+            slots.CompareTag("Weapon_Rifle")) && 
             slots.GetComponent<DraggableCombined>().IsInsideWeaponSlot
             )
         {
@@ -109,6 +122,18 @@ public class DraggableCombined : MonoBehaviour
             _movementDestination = LastPosition;
             return;
         }
+        
+        
+        // checking if the weapon slot already has armor equipped (for weapons)
+        if (slots.GetComponent<WeaponSlot>().HasAWeaponItem)
+        {
+            Debug.Log("2222");
+            _movementDestination = LastPosition;
+            return;
+        }
+        */
+
+        
 
         // checking if a weapon is dragged to the wrong slot (that is either empty or equipped)
         if (IsAWeapon)
@@ -118,7 +143,8 @@ public class DraggableCombined : MonoBehaviour
                 Debug.Log("3333a");
                 _movementDestination = LastPosition;
                 return;
-            } 
+            }
+            /*
             else if (
             (slots.CompareTag("Armor_Basic") ||
             slots.CompareTag("Armor_Dodge") ||
@@ -131,8 +157,9 @@ public class DraggableCombined : MonoBehaviour
                 _movementDestination = LastPosition;
                 return;
             }
+            */
         }
-        
+
         // checking if an armor is dragged to the wrong slot (that is either empty or equipped)
         if (!IsAWeapon)
         {
@@ -142,8 +169,9 @@ public class DraggableCombined : MonoBehaviour
                 _movementDestination = LastPosition;
                 return;
             }
+            /*
             else if (
-            (slots.CompareTag("Weapon_Pistol") || 
+            (slots.CompareTag("Weapon_Pistol") ||
             slots.CompareTag("Weapon_Rifle")) &&
             slots.GetComponent<DraggableCombined>().IsInsideWeaponSlot
             )
@@ -151,13 +179,14 @@ public class DraggableCombined : MonoBehaviour
                 Debug.Log("4444b");
                 _movementDestination = LastPosition;
                 return;
-            }       
+            }
+            */
         }
 
         if (!IsInsideArmorSlot && slots.CompareTag("ArmorSlot"))
         {
             _movementDestination = slots.transform.position + armor_offset;
-            //ArmorSlot.GetComponent<ArmorSlot>().ArmorSlotHasItems = true;
+            ArmorSlot.GetComponent<ArmorSlot>().HasAnArmorItem = true;
             IsInsideArmorSlot = true;
 
             if (_collider.CompareTag("Armor_Basic"))
@@ -189,7 +218,7 @@ public class DraggableCombined : MonoBehaviour
         if (!IsInsideWeaponSlot && slots.CompareTag("WeaponSlot"))
         {
             _movementDestination = slots.transform.position + weapon_offset;
-            //ArmorSlot.GetComponent<ArmorSlot>().ArmorSlotHasItems = true;
+            WeaponSlot.GetComponent<WeaponSlot>().HasAWeaponItem = true;
             IsInsideWeaponSlot = true;
 
             if (_collider.CompareTag("Weapon_Pistol"))
@@ -219,7 +248,7 @@ public class DraggableCombined : MonoBehaviour
         // if (ArmorSlot.GetComponent<ArmorSlot>().ArmorSlotHasItems && slots.CompareTag("ArmorSlot"))
         if (IsInsideArmorSlot && slots.CompareTag("ArmorSlot"))
         {
-            // ArmorSlot.GetComponent<ArmorSlot>().ArmorSlotHasItems = false;
+            ArmorSlot.GetComponent<ArmorSlot>().HasAnArmorItem = false;
             IsInsideArmorSlot = false;
 
             if (_collider.CompareTag("Armor_Basic"))
@@ -246,7 +275,7 @@ public class DraggableCombined : MonoBehaviour
 
         if (IsInsideWeaponSlot && slots.CompareTag("WeaponSlot"))
         {
-            // ArmorSlot.GetComponent<ArmorSlot>().ArmorSlotHasItems = false;
+            WeaponSlot.GetComponent<WeaponSlot>().HasAWeaponItem = false;
             IsInsideWeaponSlot = false;
 
             if (_collider.CompareTag("Weapon_Pistol"))
