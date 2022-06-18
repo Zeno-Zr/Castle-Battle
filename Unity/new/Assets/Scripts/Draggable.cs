@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
@@ -13,19 +15,28 @@ public class Draggable : MonoBehaviour
 
     private float _movementTime = 15f;
     private System.Nullable<Vector3> _movementDestination;
-    [SerializeField] private Vector3 _offset = new Vector3(-0.4f, 0, 0);
+    private Vector3 weapon_offset = new Vector3(-0.4f, 0, 0);
+    private Vector3 armor_offset = new Vector3(0, 0, 0);
 
-    [SerializeField] private Collider2D WeaponSlot;
-    [SerializeField] private Collider2D ArmorSlot;
+    [SerializeField] private GameObject ArmorSlot;
+    [SerializeField] private GameObject WeaponSlot;
 
-    private bool WeaponSlotHasItems = false;
-    private bool ArmorSlotHasItems = false;
+    public bool IsInsideArmorSlot = false;
+    public bool IsInsideWeaponSlot = false;
+
+    [SerializeField] public bool IsAWeapon;
+
+    private void Awake()
+    {
+        LastPosition = GetComponent<Transform>().position;
+    }
 
     private void Reset()
     {
         GetComponent<BoxCollider2D>().isTrigger = true;
         GetComponent<Rigidbody2D>().isKinematic = true;
     }
+
     void Start()
     {
         _collider = GetComponent<Collider2D>();
@@ -34,18 +45,15 @@ public class Draggable : MonoBehaviour
 
     void Update()
     {
-        // moves the equipped item in sync with the slot
-        if (WeaponSlotHasItems && WeaponSlot.IsTouching(_collider))
+        if (IsInsideArmorSlot && ArmorSlot.GetComponent<Collider2D>().IsTouching(_collider))
         {
-            transform.position = WeaponSlot.transform.position + _offset;
+            transform.position = ArmorSlot.transform.position + armor_offset;
         }
 
-        // moves the equipped item in sync with the slot
-        if (ArmorSlotHasItems && ArmorSlot.IsTouching(_collider))
+        if (IsInsideWeaponSlot && WeaponSlot.GetComponent<Collider2D>().IsTouching(_collider))
         {
-            transform.position = ArmorSlot.transform.position + _offset;
+            transform.position = WeaponSlot.transform.position + weapon_offset;
         }
-
     }
 
     void FixedUpdate()
@@ -55,7 +63,6 @@ public class Draggable : MonoBehaviour
             if (IsDragging)
             {
                 _movementDestination = null;
-
                 return;
             }
 
@@ -63,23 +70,6 @@ public class Draggable : MonoBehaviour
             {
                 gameObject.layer = Layer.Default;
                 _movementDestination = null;
-
-                // checks if the weapon is still equipped. If not, stops weapon from following Weaponslot
-                if (!WeaponSlot.IsTouching(_collider))
-                {
-                    WeaponSlotHasItems = false;
-                    //TODO: function to remove weapon's stats
-                    Debug.Log("remove weapon stats");
-                }
-                // checks if the armor is still equipped. If not, stops armor from following Armorslot
-                if (!ArmorSlot.IsTouching(_collider))
-                {
-                    ArmorSlotHasItems = false;
-                    //TODO: function to remove armor's stats
-                    Debug.Log("remove armor stats");
-                }
-
-
             }
             else
             {
@@ -88,59 +78,136 @@ public class Draggable : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D slots)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        Draggable collidedDraggable = slots.GetComponent<Draggable>();
-        if (collidedDraggable != null && _dragController.LastDragged.gameObject == gameObject)
+       // Debug.Log(other.tag);
+
+        Draggable collidedDraggable = other.GetComponent<Draggable>();
+
+        if (other.CompareTag("Platform") || other.CompareTag("player"))
         {
-            ColliderDistance2D colliderDistance2D = slots.Distance(_collider);
-            Vector3 diff = new Vector3(colliderDistance2D.normal.x, colliderDistance2D.normal.y) * colliderDistance2D.distance;
-            transform.position -= diff;
+            // do nothing
         }
-
-        if (!WeaponSlotHasItems && slots.CompareTag("WeaponSlot"))
+        else if (other.CompareTag("ArmorSlot") && !IsAWeapon)
         {
-            switch (_collider.tag)
+            if (other.GetComponent<ArmorSlot>().HasAnArmorItem)
             {
-                case "Weapon_Pistol":
-
-                    _movementDestination = slots.transform.position + _offset;
-                    WeaponSlotHasItems = true;
-                    //TODO: function to call to implement weapon's stats
-                    Debug.Log("add weapon stats");
-                    break;
-
-                default:
-                    break;
-
+                _movementDestination = LastPosition;
             }
-        }
-        else if (!ArmorSlotHasItems && slots.CompareTag("ArmorSlot"))
-        {
-            switch (_collider.tag)
+            else
             {
-                case "Armor_Basic":
-                case "Armor_Dodge":
-                case "Armor_Knight":
-                case "Armor_Strong":
+                IsInsideArmorSlot = true;
 
-                    _movementDestination = slots.transform.position + _offset;
-                    ArmorSlotHasItems = true;
+                if (_collider.CompareTag("Armor_Basic"))
+                {
                     //TODO: function to call to implement armor's stats
-                    Debug.Log("add armor stats");
-                    break;
+                    Debug.Log("add armor stats1");
 
-                default:
-                    break;
+                }
+                else if (_collider.CompareTag("Armor_Dodge"))
+                {
+                    //TODO: function to call to implement armor's stats
+                    Debug.Log("add armor stats2");
+
+                }
+                else if (_collider.CompareTag("Armor_Knight"))
+                {
+                    //TODO: function to call to implement armor's stats
+                    Debug.Log("add armor stats3");
+
+                }
+                else if (_collider.CompareTag("Armor_Strong"))
+                {
+                    //TODO: function to call to implement armor's stats
+                    Debug.Log("add armor stats4");
+
+                }
+
             }
         }
-        else if (!slots.CompareTag("player") && !slots.CompareTag("Platform"))
+        else if (other.CompareTag("WeaponSlot") && IsAWeapon)
+        {
+            if (other.GetComponent<WeaponSlot>().HasAWeaponItem)
+            {
+                _movementDestination = LastPosition;
+            }
+            else
+            {
+                IsInsideWeaponSlot = true;
+
+                if (_collider.CompareTag("Weapon_Pistol"))
+                {
+                    //TODO: function to call to implement armor's stats
+                    Debug.Log("add weapon stats1");
+
+                }
+                else if (_collider.CompareTag("Weapon_Rifle"))
+                {
+                    //TODO: function to call to implement armor's stats
+                    Debug.Log("add weapon stats2");
+                }
+
+            }
+        }
+        else
         {
             _movementDestination = LastPosition;
+        }
+
+        // avoid overlapping of draggables
+        if (collidedDraggable != null && _dragController.LastDragged.gameObject == gameObject)
+        {
+            ColliderDistance2D colliderDistance2D = other.Distance(_collider);
+            Vector3 diff = new Vector3(colliderDistance2D.normal.x, colliderDistance2D.normal.y) * colliderDistance2D.distance;
+            transform.position -= diff;
         }
     }
 
 
-    //ontriggerexit2d for checking if object left the collider?
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (IsInsideArmorSlot && other.CompareTag("ArmorSlot"))
+        {
+            IsInsideArmorSlot = false;
 
+            if (_collider.CompareTag("Armor_Basic"))
+            {
+                //TODO: function to call to remove armor's stats
+                Debug.Log("remove armor stats1");
+            }
+            else if (_collider.CompareTag("Armor_Dodge"))
+            {
+                //TODO: function to call to remove armor's stats
+                Debug.Log("remove armor stats2");
+            }
+            else if (_collider.CompareTag("Armor_Knight"))
+            {
+                //TODO: function to call to remove armor's stats
+                Debug.Log("remove armor stats3");
+            }
+            else if (_collider.CompareTag("Armor_Strong"))
+            {
+                //TODO: function to call to remove armor's stats
+                Debug.Log("remove armor stats4");
+            }
+        }
+
+        if (IsInsideWeaponSlot && other.CompareTag("WeaponSlot"))
+        {
+            IsInsideWeaponSlot = false;
+
+            if (_collider.CompareTag("Weapon_Pistol"))
+            {
+                //TODO: function to call to implement armor's stats
+                Debug.Log("remove weapon stats1");
+
+            }
+            else if (_collider.CompareTag("Weapon_Rifle"))
+            {
+                //TODO: function to call to implement armor's stats
+                Debug.Log("remove weapon stats2");
+            }
+        }
+
+    }
 }

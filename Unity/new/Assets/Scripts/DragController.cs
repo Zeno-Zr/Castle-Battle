@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class DragController : MonoBehaviour
 {
-    public DraggableCombined LastDragged => _lastDragged;
-
+    public Draggable LastDragged => _lastDragged;
     private bool _isDragActive = false;
     private Vector2 _screenPosition;
     private Vector3 _worldPosition;
-    private DraggableCombined _lastDragged;
+    private Draggable _lastDragged;
 
     void Awake()
     {
@@ -31,10 +30,10 @@ public class DragController : MonoBehaviour
         if (Input.touchCount > 0)
         {
             _screenPosition = Input.GetTouch(0).position;
-        }
+        }    
         else
         {
-            return;
+            return; 
         }
 
         _worldPosition = Camera.main.ScreenToWorldPoint(_screenPosition);
@@ -48,11 +47,11 @@ public class DragController : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(_worldPosition, Vector2.zero);
             if (hit.collider != null)
             {
-                DraggableCombined draggable = hit.transform.gameObject.GetComponent<DraggableCombined>();
+                Draggable draggable = hit.transform.gameObject.GetComponent<Draggable>();
                 if (draggable != null)
                 {
                     _lastDragged = draggable;
-                    InitDrag(); 
+                    InitDrag();
                 }
             }
         }
@@ -62,6 +61,7 @@ public class DragController : MonoBehaviour
     {
         _lastDragged.LastPosition = _lastDragged.transform.position;
         UpdateDragStatus(true);
+
     }
 
     void Drag()
@@ -74,9 +74,16 @@ public class DragController : MonoBehaviour
         UpdateDragStatus(false);
     }
 
-    void UpdateDragStatus(bool IsDragging)
+    void UpdateDragStatus(bool isDragging)
     {
-        _isDragActive = _lastDragged.IsDragging = IsDragging;
-        _lastDragged.gameObject.layer = IsDragging ? Layer.Dragging : Layer.Default;
+        _isDragActive = _lastDragged.IsDragging = isDragging;
+        if (isDragging)
+        {
+            _lastDragged.gameObject.layer = Layer.Dragging;
+        }
+        else
+        {
+            _lastDragged.gameObject.layer = Layer.Default;
+        }
     }
 }
