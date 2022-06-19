@@ -19,6 +19,8 @@ TagManager:
   - Armor_Knight
   - Armor_Strong
   - Weapon_Rifle
+  - HealthPotion
+  - Damage
   layers:
   - Default
   - TransparentFX

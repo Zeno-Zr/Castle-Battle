@@ -20,6 +20,7 @@ public class Draggable : MonoBehaviour
 
     [SerializeField] private GameObject ArmorSlot;
     [SerializeField] private GameObject WeaponSlot;
+    [SerializeField] private GameObject ChangeDefence;
 
     public bool IsInsideArmorSlot = false;
     public bool IsInsideWeaponSlot = false;
@@ -80,7 +81,7 @@ public class Draggable : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-       // Debug.Log(other.tag);
+        // Debug.Log(other.tag);
 
         Draggable collidedDraggable = other.GetComponent<Draggable>();
 
@@ -98,6 +99,7 @@ public class Draggable : MonoBehaviour
             {
                 IsInsideArmorSlot = true;
 
+                /*
                 if (_collider.CompareTag("Armor_Basic"))
                 {
                     //TODO: function to call to implement armor's stats
@@ -122,6 +124,24 @@ public class Draggable : MonoBehaviour
                     Debug.Log("add armor stats4");
 
                 }
+                switch (_collider.tag)
+                {
+                    case "Armor_Basic":
+                        Debug.Log("add armor stats1");
+                        break;
+                    case "Armor_Dodge":
+                        Debug.Log("add armor stats2");
+                        break;
+                    case "Armor_Knight":
+                        Debug.Log("add armor stats3");
+                        break;
+                    case "Armor_Strong":
+                        Debug.Log("add armor stats4");
+                        break;
+                }
+                */
+
+                ChangeDefence.GetComponent<DefenceBar>().ArmorDefence(_collider.tag);
 
             }
         }
@@ -135,16 +155,28 @@ public class Draggable : MonoBehaviour
             {
                 IsInsideWeaponSlot = true;
 
+                /*
                 if (_collider.CompareTag("Weapon_Pistol"))
                 {
                     //TODO: function to call to implement armor's stats
-                    Debug.Log("add weapon stats1");
+                    Debug.Log("add weapon statyys1");
 
                 }
                 else if (_collider.CompareTag("Weapon_Rifle"))
                 {
                     //TODO: function to call to implement armor's stats
                     Debug.Log("add weapon stats2");
+                }
+                */
+
+                switch (_collider.tag)
+                {
+                    case "Weapon_Pistol":
+                        Debug.Log("add weapon stats1");
+                        break;
+                    case "Weapon_Rifle":
+                        Debug.Log("add weapon stats2");
+                        break;
                 }
 
             }
@@ -170,6 +202,7 @@ public class Draggable : MonoBehaviour
         {
             IsInsideArmorSlot = false;
 
+            /*
             if (_collider.CompareTag("Armor_Basic"))
             {
                 //TODO: function to call to remove armor's stats
@@ -190,12 +223,33 @@ public class Draggable : MonoBehaviour
                 //TODO: function to call to remove armor's stats
                 Debug.Log("remove armor stats4");
             }
+            */
+
+            switch (_collider.tag)
+            {
+                case "Armor_Basic":
+                    Debug.Log("remove armor stats1");
+                    break;
+                case "Armor_Dodge":
+                    Debug.Log("remove armor stats2");
+                    break;
+                case "Armor_Knight":
+                    Debug.Log("remove armor stats3");
+                    break;
+                case "Armor_Strong":
+                    Debug.Log("remove armor stats4");
+                    break;
+            }
+
+            ChangeDefence.GetComponent<DefenceBar>().ArmorDefence(null);
+
         }
 
         if (IsInsideWeaponSlot && other.CompareTag("WeaponSlot"))
         {
             IsInsideWeaponSlot = false;
 
+            /*
             if (_collider.CompareTag("Weapon_Pistol"))
             {
                 //TODO: function to call to implement armor's stats
@@ -206,6 +260,16 @@ public class Draggable : MonoBehaviour
             {
                 //TODO: function to call to implement armor's stats
                 Debug.Log("remove weapon stats2");
+            }
+            */
+            switch (_collider.tag)
+            {
+                case "Weapon_Pistol":
+                    Debug.Log("remove weapon stats1");
+                    break;
+                case "Weapon_Rifle":
+                    Debug.Log("remove weapon stats2");
+                    break;
             }
         }
 

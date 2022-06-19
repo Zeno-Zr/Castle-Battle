@@ -12,6 +12,7 @@ public class PlayerInteraction : MonoBehaviour
     public Text scoreText;
     public PowerOn powerOn;
 
+    public HealthBar health;
 
     /*
      * For items that will trigger upon touching the player. 
@@ -20,14 +21,14 @@ public class PlayerInteraction : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Player dies if player collides with a trigger collider with the Death tag
-        if (collision.tag == "Death")
+        if (collision.CompareTag("Death"))
         {
             //Restart the level
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         //If player collide with a trigger collider with the Coin tag, add 100 to score and destroy the coin
-        if (collision.tag == "Coin")
+        if (collision.CompareTag("coin"))
         {
             score = score + 100;
             scoreText.text = score.ToString();
@@ -35,17 +36,29 @@ public class PlayerInteraction : MonoBehaviour
         }
 
         //If player collide with a battery, record player has the battery and thus able to power the portal on
-        if (collision.tag == "Battery")
+        if (collision.CompareTag("Battery"))
         {
             battery = true;
             Destroy(collision.gameObject);
         }
 
         //If player collide with the portal, and player has the battery, spawns the portal
-        if (collision.tag == "Portal" && battery == true)
+        if (collision.CompareTag("Portal") && battery == true)
         {
             // puts down a working portal in the same spot as the unpowered portal
             powerOn.TurnOnPower(collision.gameObject);
+        }
+
+        if (collision.CompareTag("HealthPotion"))
+        {
+            health.Healing(10);
+            //Destroy(collision.gameObject);
+        }
+
+        if (collision.CompareTag("Damage"))
+        {
+            health.TakeDamage(50);
+            //Destroy(collision.gameObject);
         }
     }
 }
