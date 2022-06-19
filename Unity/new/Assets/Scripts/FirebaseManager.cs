@@ -16,7 +16,6 @@ public class FirebaseManager : MonoBehaviour
     public static FirebaseAuth auth;
     public static FirebaseUser User;
     public static DatabaseReference DBreference;
-    public static string[] friendsList;
 
     //login variables
     [Header("Login")]
@@ -95,30 +94,12 @@ public class FirebaseManager : MonoBehaviour
     //Function for the add friends button
     public void AddFriendsButton()
     {
-        string AddedFriendID = friendsUIDField.text;
-        bool FriendAlreadyAdded = false;
-        for (int s = 0; s < friendsList.Length; s++)
-        {
-            if (AddedFriendID == friendsList[s])
-            {
-                FriendAlreadyAdded = true;
-            }
-        }
-        if (FriendAlreadyAdded)
-        {
-            Debug.Log("Friend already present in list");
-        }
-        else
-        {
-            string[] AppendedFriendsList = new string[friendsList.Length + 1];
-            for (int r = 0; r < friendsList.Length; r++)
-            {
-                AppendedFriendsList[r] = friendsList[r];
-            }
-            AppendedFriendsList[friendsList.Length] = AddedFriendID;
-            StartCoroutine(UpdateFriendsList(AppendedFriendsList));
-            Debug.Log("Friend successfully added");
-        }
+        StartCoroutine(UpdateFriendsList(friendsUIDField.text, true));
+    }
+
+    public void RemoveFriendsButton()
+    {
+        StartCoroutine(UpdateFriendsList(friendsUIDField.text, null));
     }
 
     public void SignOutButton()
@@ -306,9 +287,9 @@ public class FirebaseManager : MonoBehaviour
         }
     }
 
-    private IEnumerator UpdateFriendsList(string[] friends)
+    private IEnumerator UpdateFriendsList(string friends, bool? setFriendsStatus)
     {
-        var DBTask = DBreference.Child("users").Child(User.UserId).Child("friends").SetValueAsync(friends);
+        var DBTask = DBreference.Child("friends").Child(User.UserId).Child(friends).SetValueAsync(setFriendsStatus);
 
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
@@ -396,5 +377,5 @@ public class FirebaseManager : MonoBehaviour
         }
     }
 
-    //still requires: remove friends, friends display, feeding score data
+    //still requires: feeding score data
 }
