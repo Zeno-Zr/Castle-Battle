@@ -21,6 +21,7 @@ public class Draggable : MonoBehaviour
     [SerializeField] private GameObject ArmorSlot;
     [SerializeField] private GameObject WeaponSlot;
     [SerializeField] private GameObject ChangeDefence;
+    [SerializeField] private GameObject ChangeAttack;
 
     public bool IsInsideArmorSlot = false;
     public bool IsInsideWeaponSlot = false;
@@ -98,51 +99,7 @@ public class Draggable : MonoBehaviour
             else
             {
                 IsInsideArmorSlot = true;
-
-                /*
-                if (_collider.CompareTag("Armor_Basic"))
-                {
-                    //TODO: function to call to implement armor's stats
-                    Debug.Log("add armor stats1");
-
-                }
-                else if (_collider.CompareTag("Armor_Dodge"))
-                {
-                    //TODO: function to call to implement armor's stats
-                    Debug.Log("add armor stats2");
-
-                }
-                else if (_collider.CompareTag("Armor_Knight"))
-                {
-                    //TODO: function to call to implement armor's stats
-                    Debug.Log("add armor stats3");
-
-                }
-                else if (_collider.CompareTag("Armor_Strong"))
-                {
-                    //TODO: function to call to implement armor's stats
-                    Debug.Log("add armor stats4");
-
-                }
-                switch (_collider.tag)
-                {
-                    case "Armor_Basic":
-                        Debug.Log("add armor stats1");
-                        break;
-                    case "Armor_Dodge":
-                        Debug.Log("add armor stats2");
-                        break;
-                    case "Armor_Knight":
-                        Debug.Log("add armor stats3");
-                        break;
-                    case "Armor_Strong":
-                        Debug.Log("add armor stats4");
-                        break;
-                }
-                */
-
                 ChangeDefence.GetComponent<DefenceBar>().ArmorDefence(_collider.tag);
-
             }
         }
         else if (other.CompareTag("WeaponSlot") && IsAWeapon)
@@ -154,21 +111,7 @@ public class Draggable : MonoBehaviour
             else
             {
                 IsInsideWeaponSlot = true;
-
                 /*
-                if (_collider.CompareTag("Weapon_Pistol"))
-                {
-                    //TODO: function to call to implement armor's stats
-                    Debug.Log("add weapon statyys1");
-
-                }
-                else if (_collider.CompareTag("Weapon_Rifle"))
-                {
-                    //TODO: function to call to implement armor's stats
-                    Debug.Log("add weapon stats2");
-                }
-                */
-
                 switch (_collider.tag)
                 {
                     case "Weapon_Pistol":
@@ -178,6 +121,8 @@ public class Draggable : MonoBehaviour
                         Debug.Log("add weapon stats2");
                         break;
                 }
+                */
+                ChangeAttack.GetComponent<AttackValue>().ChangeAttackValue(_collider.tag);
 
             }
         }
@@ -271,6 +216,8 @@ public class Draggable : MonoBehaviour
                     Debug.Log("remove weapon stats2");
                     break;
             }
+            ChangeAttack.GetComponent<AttackValue>().ChangeAttackValue(null);
+
         }
 
     }

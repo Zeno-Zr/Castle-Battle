@@ -48,6 +48,7 @@ public class DefenceBar : MonoBehaviour
                 break;
 
             default:
+                Debug.Log("remove armor stats");
                 DefenceBarAdjustment(0);
                 break;
         }
