@@ -12,7 +12,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed = 8f;
     [SerializeField] private float jumpingPower = 16f;
     private bool isFacingRight = true;
-   // private bool jumpKeyWasPressed = false;
+    // private bool jumpKeyWasPressed = false;
+    public PlayerAttack playerAttack;
 
     void Start()
     {
@@ -89,6 +90,8 @@ public class PlayerMovement : MonoBehaviour
         Vector3 localScale = transform.localScale;
         localScale.x *= -1f;
         transform.localScale = localScale;
+
+        playerAttack.isLeft = !playerAttack.isLeft;
     }
 
     public void Move(InputAction.CallbackContext context)

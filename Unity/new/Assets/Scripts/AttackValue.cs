@@ -9,6 +9,10 @@ public class AttackValue : MonoBehaviour
     // public Text AttackValueText;
     public TextMeshProUGUI AttackValueText;
 
+    public bool IsRangedWeapon;
+    public string WeaponTag;
+    public float attackdamage; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +28,7 @@ public class AttackValue : MonoBehaviour
     void ChangeAttacktext(float AttackStats)
     {
         AttackValueText.text = AttackStats.ToString();
+        attackdamage = AttackStats;
     }
 
     public void ChangeAttackValue(string weaponname)
@@ -42,8 +47,5 @@ public class AttackValue : MonoBehaviour
                 ChangeAttacktext(0);
                 break;
         }
-
-
-
     }
 }

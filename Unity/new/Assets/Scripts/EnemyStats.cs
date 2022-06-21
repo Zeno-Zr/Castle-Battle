@@ -10,6 +10,8 @@ public class EnemyStats : MonoBehaviour
     public float enemyMinHealth;
     public float enemyMaxHealth;
 
+    public AttackValue attackValue;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,12 +28,12 @@ public class EnemyStats : MonoBehaviour
 
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage()
     {
-        if (damage - enemyDefenceAmount > 0)
+        if (attackValue.attackdamage - enemyDefenceAmount > 0)
         {
             Debug.Log("damage taken");
-            enemyHealthAmount -= damage - enemyDefenceAmount;
+            enemyHealthAmount -= attackValue.attackdamage - enemyDefenceAmount;
         }
         else
         {

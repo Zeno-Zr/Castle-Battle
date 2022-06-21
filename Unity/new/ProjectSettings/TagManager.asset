@@ -21,6 +21,7 @@ TagManager:
   - Weapon_Rifle
   - HealthPotion
   - Damage
+  - Enemy
   layers:
   - Default
   - TransparentFX

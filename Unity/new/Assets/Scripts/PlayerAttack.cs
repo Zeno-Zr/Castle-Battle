@@ -12,7 +12,13 @@ public class PlayerAttack : MonoBehaviour
     public Transform attackPos;
     public LayerMask whatIsEnemies;
     [SerializeField] private float attackRange;
-    [SerializeField] private int damage;
+    //public int damage;
+
+    public AttackValue attackValue; // checks IsMeleeWeapon from here
+
+    public GameObject projectile;
+    public Transform shotPoint;
+    public bool isLeft = true;
 
 
     // Update is called once per frame
@@ -22,12 +28,31 @@ public class PlayerAttack : MonoBehaviour
         {
             if (IsPlayerAttacking)
             {
-                Debug.Log("working");
-                Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
-                for (int i = 0; i < enemiesToDamage.Length; i++)
+                if (!attackValue.IsRangedWeapon)
                 {
-                    enemiesToDamage[i].GetComponent<EnemyStats>().TakeDamage(damage); // deduct health from enemy
-                    Debug.Log("aa");
+                    Debug.Log("working melee");
+                    Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
+                    for (int i = 0; i < enemiesToDamage.Length; i++)
+                    {
+                        enemiesToDamage[i].GetComponent<EnemyStats>().TakeDamage(); // deduct health from enemy
+                        Debug.Log("aa");
+                    }
+                }
+                else if (attackValue.IsRangedWeapon)
+                {
+                    
+                    Debug.Log("working ranged");
+                    if (isLeft)
+                    {
+                        shotPoint.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
+                        Instantiate(projectile, shotPoint.position, shotPoint.rotation);
+                    }
+                    else if (!isLeft)
+                    {
+                        shotPoint.rotation = Quaternion.Euler(new Vector3(0f, 0f, 180f));
+                        Instantiate(projectile, shotPoint.position, shotPoint.rotation);
+                    }
+
                 }
 
                 timeBtwAttack = startTimeBtwAttack;

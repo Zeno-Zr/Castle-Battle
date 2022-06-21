@@ -21,7 +21,7 @@ public class Draggable : MonoBehaviour
     [SerializeField] private GameObject ArmorSlot;
     [SerializeField] private GameObject WeaponSlot;
     [SerializeField] private GameObject ChangeDefence;
-    [SerializeField] private GameObject ChangeAttack;
+    [SerializeField] private AttackValue ChangeAttack;
 
     public bool IsInsideArmorSlot = false;
     public bool IsInsideWeaponSlot = false;
@@ -122,7 +122,10 @@ public class Draggable : MonoBehaviour
                         break;
                 }
                 */
-                ChangeAttack.GetComponent<AttackValue>().ChangeAttackValue(_collider.tag);
+                //ChangeAttack.GetComponent<AttackValue>().ChangeAttackValue(_collider.tag);
+                ChangeAttack.ChangeAttackValue(_collider.tag);
+                ChangeAttack.IsRangedWeapon = true;
+                ChangeAttack.WeaponTag = _collider.tag;
 
             }
         }
@@ -216,8 +219,10 @@ public class Draggable : MonoBehaviour
                     Debug.Log("remove weapon stats2");
                     break;
             }
-            ChangeAttack.GetComponent<AttackValue>().ChangeAttackValue(null);
-
+            //ChangeAttack.GetComponent<AttackValue>().ChangeAttackValue(null);
+            ChangeAttack.ChangeAttackValue(null);
+            ChangeAttack.IsRangedWeapon = false;
+            ChangeAttack.WeaponTag = null;
         }
 
     }
