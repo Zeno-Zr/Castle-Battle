@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class FloatingPlatformPath : MonoBehaviour
 {
+    //set Layer to ground, rigidbody2D body type to kinematic
     public float length = 0f;
     public float height = 0f;
     public int pathNumber = 0;
     public float speed = 10f;
+    public float delayTime = 0f;
 
     Rigidbody2D rb;
     float TimeX;
     float TimeY;
-    bool IsDone = true;
+    bool IsDone = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +25,7 @@ public class FloatingPlatformPath : MonoBehaviour
         {
             TimeX = length / speed;
             TimeY = height / speed;
-            StartCoroutine(Wander(pathNumber));
+            StartCoroutine(DelayBeforeStart());
         }
     }
 
@@ -34,6 +36,12 @@ public class FloatingPlatformPath : MonoBehaviour
             IsDone = false;
             StartCoroutine(Wander(pathNumber));
         }
+    }
+
+    IEnumerator DelayBeforeStart()
+    {
+        yield return new WaitForSeconds(delayTime);
+        StartCoroutine(Wander(pathNumber));
     }
 
     IEnumerator Wander(int WanderPath)
