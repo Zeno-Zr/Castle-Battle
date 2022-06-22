@@ -592,12 +592,36 @@ MonoBehaviour:
     m_ActionId: 612e6647-21b1-448f-bb8c-5672820b64fc
     m_ActionName: Player/Move
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7947171983727740643}
+        m_TargetAssemblyTypeName: PlayerInteract, Assembly-CSharp
+        m_MethodName: Interact
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: e590c20e-125f-4f99-ae96-6d61ed9b6327
     m_ActionName: Player/Look[/Mouse/delta,/Touchscreen/delta,/Pen/delta,/Device
       Simulator Touchscreen/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 982061375205001604}
+        m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
+        m_MethodName: Attack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 6e8cd3ae-0f78-4a0a-88b3-96589adf8af5
     m_ActionName: Player/Fire
   - m_PersistentCalls:
@@ -750,6 +774,18 @@ MonoBehaviour:
     - pistol
     - shotgun
     - rifle
+--- !u!114 &7947171983727740643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496732613402060183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c16b07189b24642a83c71fd074dc53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &496732614047750173 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8585162453328922814, guid: 638c51a874417ad4cb891b99f37c4551, type: 3}
