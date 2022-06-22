@@ -106,7 +106,7 @@ public class FirebaseManager : MonoBehaviour
     {
         auth.SignOut();
         Debug.Log("User signed out");
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("LoginRegister");
         //ClearLoginRegisterFeilds();
     }
 
@@ -168,7 +168,7 @@ public class FirebaseManager : MonoBehaviour
 
             yield return new WaitForSeconds(1);
 
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene("Menu");
         }
     }
 
