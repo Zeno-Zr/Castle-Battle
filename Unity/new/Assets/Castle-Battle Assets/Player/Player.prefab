@@ -661,6 +661,29 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &982061375205001604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496732613402060183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49a0522401d801c49a3ba8566baee1cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsPlayerAttacking: 0
+  startTimeBtwAttack: 1
+  attackPos: {fileID: 7537760417902117488}
+  whatIsEnemies:
+    serializedVersion: 2
+    m_Bits: 256
+  attackRange: 0.85
+  attackValue: {fileID: 0}
+  projectile: {fileID: 1003282853830814440, guid: 5dd0307e86e951b48bfded6307c84283, type: 3}
+  shotPoint: {fileID: 7537760417902117488}
+  isLeft: 0
 --- !u!114 &1138183144349246681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,6 +698,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
   powerOn: {fileID: 0}
+  health: {fileID: 0}
 --- !u!114 &6798833072838533940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -694,6 +718,7 @@ MonoBehaviour:
   animator: {fileID: 1074197978066723762}
   speed: 6
   jumpingPower: 7
+  playerAttack: {fileID: 0}
 --- !u!114 &9212829442861344687
 MonoBehaviour:
   m_ObjectHideFlags: 0
