@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.EnhancedTouch;
 
 public class DragController : MonoBehaviour
 {
@@ -12,24 +12,43 @@ public class DragController : MonoBehaviour
 
     void Awake()
     {
+
         DragController[] controllers = FindObjectsOfType<DragController>();
         if (controllers.Length > 1)
         {
             Destroy(gameObject);
         }
+
+    }
+
+    void Start()
+    {
+        OnEnable();
+    }
+
+    protected void OnEnable()
+    {
+        EnhancedTouchSupport.Enable();
+    }
+    protected void OnDisable()
+    {
+        EnhancedTouchSupport.Disable();
     }
 
     void Update()
     {
-        if (_isDragActive && (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended))
+
+        //if (_isDragActive && (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended))
+        if (_isDragActive && (UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches.Count == 1 && UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches[0].phase == UnityEngine.InputSystem.TouchPhase.Ended))
         {
             Drop();
             return;
         }
 
-        if (Input.touchCount > 0)
+        if (UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches.Count > 0)
         {
-            _screenPosition = Input.GetTouch(0).position;
+            //_screenPosition = Input.GetTouch(0).position;
+            _screenPosition = UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches[0].screenPosition;
         }    
         else
         {
@@ -76,7 +95,8 @@ public class DragController : MonoBehaviour
 
     void UpdateDragStatus(bool isDragging)
     {
-        _isDragActive = _lastDragged.IsDragging = isDragging;
+        _isDragActive = isDragging;
+        _lastDragged.IsDragging = isDragging;
         if (isDragging)
         {
             _lastDragged.gameObject.layer = Layer.Dragging;
