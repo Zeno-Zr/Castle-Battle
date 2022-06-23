@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 3827762974674828441}
   m_Layer: 0
   m_Name: MobProjectile1
-  m_TagString: Untagged
+  m_TagString: Damage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,7 +135,6 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
-  ProjectileTarget: {fileID: 0}
   speed: 10
 --- !u!50 &2323817370282681800
 Rigidbody2D:

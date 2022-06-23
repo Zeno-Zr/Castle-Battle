@@ -24,11 +24,23 @@ EditorBuildSettings:
     path: Assets/Scenes/Level 1.unity
     guid: 60e228dda2295be48abc88722c05533a
   - enabled: 1
-    path: Assets/Scenes/Level 2.unity
-    guid: 3f36f60edb6d0074caa34b997a9acd78
+    path: Assets/Scenes/ScifiNew 1.unity
+    guid: d9dfb82b4eb5c8c4c96900e75ff09089
+  - enabled: 1
+    path: Assets/Scenes/ScifiNew 2.unity
+    guid: 2be44e50884c49945a8afd3137360ff6
+  - enabled: 1
+    path: Assets/Scenes/ScifiNew 3.unity
+    guid: 6dd5cc875beb94546a85671c09df4944
   - enabled: 1
     path: Assets/Scenes/SandLevel 1.unity
     guid: f609fc12275ad594f82b86fb32c97cf0
+  - enabled: 1
+    path: Assets/Scenes/SandLevel 2.unity
+    guid: f2e0f477a047b2e44a0ca0a16e4892d9
+  - enabled: 1
+    path: Assets/Scenes/SandLevel 3.unity
+    guid: 237fb7b79c38f4141a59d9ec6fcbab58
   - enabled: 1
     path: Assets/Scenes/End.unity
     guid: 776d1de821a82a94eba641f1e6336f5b
@@ -36,3 +48,4 @@ EditorBuildSettings:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 301919e55804fd1479b8da75eb67de24, type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 2fc166807b9711c4d8c8def47596e87b, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: b1a215da4145b8649b7c528c7440b1f9, type: 2}
+    com.unity.input.settings: {fileID: 11400000, guid: 57c9bc0fc778b444196594e432fb26c2, type: 2}
