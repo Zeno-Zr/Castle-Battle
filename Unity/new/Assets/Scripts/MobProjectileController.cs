@@ -21,6 +21,7 @@ public class MobProjectileController : MonoBehaviour
         {
             speed = -speed;
         }
+        StartCoroutine(BulletExpiry());
     }
 
     // Update is called once per frame
@@ -35,5 +36,11 @@ public class MobProjectileController : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    IEnumerator BulletExpiry()
+    {
+        yield return new WaitForSeconds(5);
+        Destroy(this.gameObject);
     }
 }
