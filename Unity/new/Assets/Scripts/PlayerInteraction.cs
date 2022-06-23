@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -13,6 +14,8 @@ public class PlayerInteraction : MonoBehaviour
     public PowerOn powerOn;
 
     public HealthBar health;
+
+    public TextMeshProUGUI DisplayInteract;
 
     /*
      * For items that will trigger upon touching the player. 
@@ -61,5 +64,16 @@ public class PlayerInteraction : MonoBehaviour
             //Destroy(collision.gameObject);
         }
     }
+
+    public void OpenInteractable()
+    {
+        DisplayInteract.gameObject.SetActive(true);
+    }
+
+    public void CloseInteractable()
+    {
+        DisplayInteract.gameObject.SetActive(false);
+    }
+
 }
 

@@ -13,10 +13,19 @@ public abstract class Interactable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("player"))
+        {
+            collision.GetComponent<PlayerInteraction>().OpenInteractable();
+        }
         
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (collision.CompareTag("player"))
+        {
+            collision.GetComponent<PlayerInteraction>().CloseInteractable();
+        }
+
         
     }
 }
