@@ -9,6 +9,8 @@ public class AttackValue : MonoBehaviour
     // public Text AttackValueText;
     public TextMeshProUGUI AttackValueText;
 
+    public SwitchPart SwitchPart;
+
     public bool IsRangedWeapon;
     public string WeaponTag;
     public float attackdamage; 
@@ -38,13 +40,21 @@ public class AttackValue : MonoBehaviour
             case "Weapon_Pistol":
                 ChangeAttacktext(5);
                 Debug.Log("add weapon stats1");
+                SwitchPart.SwapWeapon(0);
                 break;
-            case "Weapon_Rifle":
+            case "Weapon_Shotgun":
                 ChangeAttacktext(9);
                 Debug.Log("add weapon stats2");
+                SwitchPart.SwapWeapon(1);
+                break;
+            case "Weapon_Rifle":
+                ChangeAttacktext(13);
+                Debug.Log("add weapon stats3");
+                SwitchPart.SwapWeapon(2);
                 break;
             default:
                 ChangeAttacktext(0);
+                SwitchPart.SwapWeapon(0);
                 break;
         }
     }

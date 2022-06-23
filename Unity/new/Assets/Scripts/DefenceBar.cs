@@ -11,6 +11,8 @@ public class DefenceBar : MonoBehaviour
     public float minDefence = 0;
     public float maxDefence = 100;
 
+    public SwitchPart SwitchPart;
+
     private void Start()
     {
         defenceAmount = Mathf.Clamp(defenceAmount, minDefence, maxDefence);
@@ -33,23 +35,28 @@ public class DefenceBar : MonoBehaviour
             case "Armor_Basic":
                 Debug.Log("add armor stats1");
                 DefenceBarAdjustment(10);
+                SwitchPart.SwapArmor(0);
                 break;
             case "Armor_Dodge":
                 Debug.Log("add armor stats2");
                 DefenceBarAdjustment(30);
+                SwitchPart.SwapArmor(1);
                 break;
             case "Armor_Knight":
                 Debug.Log("add armor stats3");
                 DefenceBarAdjustment(60);
+                SwitchPart.SwapArmor(2);
                 break;
             case "Armor_Strong":
                 Debug.Log("add armor stats4");
                 DefenceBarAdjustment(80);
+                SwitchPart.SwapArmor(3);
                 break;
 
             default:
                 Debug.Log("remove armor stats");
                 DefenceBarAdjustment(0);
+                SwitchPart.SwapArmor(0);
                 break;
         }
     }
