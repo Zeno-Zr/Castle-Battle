@@ -35,4 +35,10 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadSceneAsync("FriendsAndAchievements");
     }
+
+    public void TempScorePageButton()
+    {
+        //Load the temp score scene
+        SceneManager.LoadScene("UploadScore");
+    }
 }

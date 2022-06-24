@@ -124,8 +124,11 @@ public class FirebaseManager : MonoBehaviour
 
     public void SaveDataButton()
     {
-        StartCoroutine(UpdateUsernameAuth(usernameField.text));
-        StartCoroutine(UpdateUsernameDatabase(usernameField.text));
+        if(usernameField.text != null && usernameField.text != User.DisplayName)
+        {
+            StartCoroutine(UpdateUsernameAuth(usernameField.text));
+            StartCoroutine(UpdateUsernameDatabase(usernameField.text));
+        }
         
         StartCoroutine(UpdateScore(int.Parse(scoreField.text)));
     }
