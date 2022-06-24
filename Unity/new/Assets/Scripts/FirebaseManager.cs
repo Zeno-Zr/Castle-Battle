@@ -384,13 +384,19 @@ public class FirebaseManager : MonoBehaviour
 
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
-        if (DBTask.Exception != null)
+        var PullFriendsList = DBreference.Child("friends").Child(User.UserId).GetValueAsync();
+
+        yield return new WaitUntil(predicate: () => PullFriendsList.IsCompleted);
+
+        if (DBTask.Exception != null || PullFriendsList.Exception != null)
         {
             Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+            Debug.LogWarning(message: $"Failed to register task with {PullFriendsList.Exception}");
         }
         else
         {
             DataSnapshot snapshot = DBTask.Result;
+            DataSnapshot friendsList = PullFriendsList.Result;
             Debug.Log("Data has been retrieved");
 
             //Destroy existing scoreboard elements
@@ -401,19 +407,22 @@ public class FirebaseManager : MonoBehaviour
 
             foreach (DataSnapshot childSnapshot in snapshot.Children.Reverse<DataSnapshot>())
             {
-                string username = childSnapshot.Child("username").Value.ToString();
-                int score = int.Parse(childSnapshot.Child("score").Value.ToString());
+                if(friendsList.Child(childSnapshot.Child("username").Key).Exists)
+                {
+                    string username = childSnapshot.Child("username").Value.ToString();
+                    int score = int.Parse(childSnapshot.Child("score").Value.ToString());
 
-                Debug.Log("Creating Scoreboard Elements for " + username);
+                    Debug.Log("Creating Scoreboard Elements for " + username);
 
-                GameObject scoreboardElement = Instantiate(scoreElement, scoreboardContent);
-                scoreboardElement.GetComponent<ScoreElement>().NewScoreElement(username, score);
-                scoreboardElement.GetComponent<ScoreElement>().RecordFriendUID(childSnapshot.Child("username").Key);
+                    GameObject scoreboardElement = Instantiate(scoreElement, scoreboardContent);
+                    scoreboardElement.GetComponent<ScoreElement>().NewScoreElement(username, score);
+                    scoreboardElement.GetComponent<ScoreElement>().RecordFriendUID(childSnapshot.Child("username").Key);
+                }
             }
             friendsScreenElements.SetActive(false);
             friendsScreenElements.SetActive(true);
         }
     }
 
-    //still requires: feeding score data
+    //still requires: make add friends two sided
 }
