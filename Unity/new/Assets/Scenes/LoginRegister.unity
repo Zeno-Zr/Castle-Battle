@@ -5031,7 +5031,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c32af6e087993d459ae1b69d28b720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dependencyStatus: 0
   emailLoginField: {fileID: 728009125}
   passwordLoginField: {fileID: 288471328}
   warningLoginText: {fileID: 1120505766}
@@ -5041,6 +5040,13 @@ MonoBehaviour:
   passwordRegisterField: {fileID: 1484623463}
   passwordRegisterVerifyField: {fileID: 2049681267}
   warningRegisterText: {fileID: 407530996}
+  usernameDisplayField: {fileID: 0}
+  usernameField: {fileID: 0}
+  scoreField: {fileID: 0}
+  scoreElement: {fileID: 0}
+  scoreboardContent: {fileID: 0}
+  myUID: {fileID: 0}
+  friendsUIDField: {fileID: 0}
 --- !u!4 &1822334667
 Transform:
   m_ObjectHideFlags: 0

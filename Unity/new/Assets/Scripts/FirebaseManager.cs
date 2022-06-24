@@ -12,7 +12,7 @@ public class FirebaseManager : MonoBehaviour
 {
     //Firebase variables
     [Header("Firebase")]
-    public static DependencyStatus dependencyStatus;
+    public DependencyStatus dependencyStatus;
     public static FirebaseAuth auth;
     public static FirebaseUser User;
     public static DatabaseReference DBreference;
@@ -39,9 +39,14 @@ public class FirebaseManager : MonoBehaviour
     public TMP_Text scoreField;
     public GameObject scoreElement;
     public Transform scoreboardContent;
+    public TMP_Text myUID;
 
     [Header("Friends")]
     public TMP_InputField friendsUIDField;
+    public GameObject friendsScreenElements;
+
+    static string CorrectEmail;
+    static string CorrectPassword;
 
     private void Awake()
     {
@@ -58,6 +63,11 @@ public class FirebaseManager : MonoBehaviour
                 Debug.LogError("Could not resolve all Firebase dependencies: " + dependencyStatus);
             }
         });
+
+        if(CorrectEmail != null && CorrectPassword != null)
+        {
+            StartCoroutine(Login(CorrectEmail, CorrectPassword));
+        }
     }
 
     private void InitializeFirebase()
@@ -97,9 +107,9 @@ public class FirebaseManager : MonoBehaviour
         StartCoroutine(UpdateFriendsList(friendsUIDField.text, true));
     }
 
-    public void RemoveFriendsButton()
+    public void RemoveFriendsButton(string placeholderUID)
     {
-        StartCoroutine(UpdateFriendsList(friendsUIDField.text, null));
+        StartCoroutine(UpdateFriendsList(placeholderUID, null));
     }
 
     public void SignOutButton()
@@ -107,6 +117,8 @@ public class FirebaseManager : MonoBehaviour
         auth.SignOut();
         Debug.Log("User signed out");
         SceneManager.LoadScene("LoginRegister");
+        CorrectEmail = null;
+        CorrectPassword = null;
         //ClearLoginRegisterFeilds();
     }
 
@@ -122,6 +134,11 @@ public class FirebaseManager : MonoBehaviour
     {
         StartCoroutine(LoadUserData());
         StartCoroutine(LoadScoreboardData());
+    }
+
+    public void CopyUID()
+    {
+        GUIUtility.systemCopyBuffer = myUID.text;
     }
 
     private IEnumerator Login(string _email, string _password)
@@ -163,12 +180,24 @@ public class FirebaseManager : MonoBehaviour
             //Now get the result
             User = LoginTask.Result;
             Debug.LogFormat("User signed in successfully: {0} ({1})", User.DisplayName, User.Email);
-            warningLoginText.text = "";
-            confirmLoginText.text = "Logged In";
 
-            yield return new WaitForSeconds(1);
+            CorrectEmail = _email;
+            CorrectPassword = _password;
 
-            SceneManager.LoadScene("Menu");
+            if(SceneManager.GetActiveScene().name == "FriendsAndAchievements")
+            {
+                LoadFriendsSceneButton();
+            }
+            
+            if(SceneManager.GetActiveScene().name == "LoginRegister")
+            {
+                warningLoginText.text = "";
+                confirmLoginText.text = "Logged In";
+
+                yield return new WaitForSeconds(1);
+
+                SceneManager.LoadScene("Menu");
+            }
         }
     }
 
@@ -342,6 +371,8 @@ public class FirebaseManager : MonoBehaviour
             scoreField.text = snapshot.Child("score").Value.ToString();
         }
         usernameDisplayField.text = User.DisplayName;
+        myUID.text = User.UserId;
+        Debug.Log("User Data Loaded");
     }
 
     private IEnumerator LoadScoreboardData()
@@ -356,8 +387,8 @@ public class FirebaseManager : MonoBehaviour
         }
         else
         {
-            //Data has been retrieved
             DataSnapshot snapshot = DBTask.Result;
+            Debug.Log("Data has been retrieved");
 
             //Destroy existing scoreboard elements
             foreach (Transform child in scoreboardContent.transform)
@@ -365,15 +396,19 @@ public class FirebaseManager : MonoBehaviour
                 Destroy(child.gameObject);
             }
 
-            //Create new scoreboard elements
             foreach (DataSnapshot childSnapshot in snapshot.Children.Reverse<DataSnapshot>())
             {
                 string username = childSnapshot.Child("username").Value.ToString();
                 int score = int.Parse(childSnapshot.Child("score").Value.ToString());
 
+                Debug.Log("Creating Scoreboard Elements for " + username);
+
                 GameObject scoreboardElement = Instantiate(scoreElement, scoreboardContent);
                 scoreboardElement.GetComponent<ScoreElement>().NewScoreElement(username, score);
+                scoreboardElement.GetComponent<ScoreElement>().RecordFriendUID(childSnapshot.Child("username").Key);
             }
+            friendsScreenElements.SetActive(false);
+            friendsScreenElements.SetActive(true);
         }
     }
 

@@ -31,9 +31,8 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
-    public void FriendsAndAchievements()
+    public void FriendsScreenButton()
     {
-        //Load the friends and achievements scene
-        SceneManager.LoadScene("FriendsAndAchievements");
+        SceneManager.LoadSceneAsync("FriendsAndAchievements");
     }
 }

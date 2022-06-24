@@ -509,6 +509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f21c3fadd0fb2244b041f4959ca21bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenuScreen: {fileID: 0}
 --- !u!1 &319466664
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,6 +548,12 @@ MonoBehaviour:
   passwordRegisterField: {fileID: 0}
   passwordRegisterVerifyField: {fileID: 0}
   warningRegisterText: {fileID: 0}
+  usernameDisplayField: {fileID: 0}
+  usernameField: {fileID: 0}
+  scoreField: {fileID: 0}
+  scoreElement: {fileID: 0}
+  scoreboardContent: {fileID: 0}
+  friendsUIDField: {fileID: 0}
 --- !u!4 &319466666
 Transform:
   m_ObjectHideFlags: 0
@@ -1740,7 +1747,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 310962665}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: FriendsAndAchievements
+        m_MethodName: FriendsScreenButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
