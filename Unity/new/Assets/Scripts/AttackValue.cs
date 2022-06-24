@@ -38,17 +38,17 @@ public class AttackValue : MonoBehaviour
         switch (weaponname)
         {
             case "Weapon_Pistol":
-                ChangeAttacktext(5);
+                ChangeAttacktext(7);
                 Debug.Log("add weapon stats1");
                 SwitchPart.SwapWeapon(0);
                 break;
             case "Weapon_Shotgun":
-                ChangeAttacktext(9);
+                ChangeAttacktext(13);
                 Debug.Log("add weapon stats2");
                 SwitchPart.SwapWeapon(1);
                 break;
             case "Weapon_Rifle":
-                ChangeAttacktext(13);
+                ChangeAttacktext(21);
                 Debug.Log("add weapon stats3");
                 SwitchPart.SwapWeapon(2);
                 break;

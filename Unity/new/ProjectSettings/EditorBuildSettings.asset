@@ -18,11 +18,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
   - enabled: 1
-    path: Assets/Scenes/template level.unity
-    guid: e20efa880fed32a4ca3d9c782e0afcf0
+    path: Assets/Scenes/BasicLevel1.unity
+    guid: 375594e4175e76a4283cfa09637efd41
   - enabled: 1
-    path: Assets/Scenes/Level 1.unity
-    guid: 60e228dda2295be48abc88722c05533a
+    path: Assets/Scenes/BasicLevel2.unity
+    guid: 1c15c77437b05314f89d0b94a1ddfbd2
+  - enabled: 1
+    path: Assets/Scenes/BasicLevel3.unity
+    guid: 2c2aafe0d1b4b2644af0412405a632fd
   - enabled: 1
     path: Assets/Scenes/ScifiNew 1.unity
     guid: d9dfb82b4eb5c8c4c96900e75ff09089
