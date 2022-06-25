@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour
 {
     public GameObject pauseMenuScreen;
+    public GameObject howToPlay;
 
     public void PauseGame()
     {
@@ -40,5 +41,15 @@ public class Menu : MonoBehaviour
     {
         //Load the temp score scene
         SceneManager.LoadScene("UploadScore");
+    }
+
+    public void HowToPlayOpen()
+    {
+        howToPlay.SetActive(true);
+    }
+
+    public void HowToPlayFalse()
+    {
+        howToPlay.SetActive(false);
     }
 }

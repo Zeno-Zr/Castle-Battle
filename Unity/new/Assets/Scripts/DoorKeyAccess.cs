@@ -12,7 +12,7 @@ public class DoorKeyAccess : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DoorOpen = GetComponent<Interactable>();
+        Transform transform = GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -21,7 +21,7 @@ public class DoorKeyAccess : MonoBehaviour
         if (checkPlayer())
         {
             Destroy(key.gameObject);
-            DoorOpen.enabled = true;
+            transform.position = new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z);
         }
     }
 

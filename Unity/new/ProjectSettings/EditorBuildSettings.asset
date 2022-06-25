@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/UploadScore.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 1bf4e27024bdab04b9ce3a4c3b63043a
+  - enabled: 1
     path: Assets/Scenes/BasicLevel1.unity
     guid: 375594e4175e76a4283cfa09637efd41
   - enabled: 1
