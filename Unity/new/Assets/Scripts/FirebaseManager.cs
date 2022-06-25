@@ -37,6 +37,7 @@ public class FirebaseManager : MonoBehaviour
     public TMP_Text usernameDisplayField;
     public TMP_InputField usernameField;
     public TMP_Text scoreField;
+    public TMP_InputField scoreInputField;
     public GameObject scoreElement;
     public Transform scoreboardContent;
     public TMP_Text myUID;
@@ -130,7 +131,7 @@ public class FirebaseManager : MonoBehaviour
             StartCoroutine(UpdateUsernameDatabase(usernameField.text));
         }
         
-        StartCoroutine(UpdateScore(int.Parse(scoreField.text)));
+        StartCoroutine(UpdateScore(int.Parse(scoreInputField.text)));
     }
 
     public void LoadFriendsSceneButton()
@@ -190,6 +191,11 @@ public class FirebaseManager : MonoBehaviour
             if(SceneManager.GetActiveScene().name == "FriendsAndAchievements")
             {
                 LoadFriendsSceneButton();
+            }
+
+            if(SceneManager.GetActiveScene().name == "UploadScore")
+            {
+                usernameDisplayField.text = User.DisplayName;
             }
             
             if(SceneManager.GetActiveScene().name == "LoginRegister")

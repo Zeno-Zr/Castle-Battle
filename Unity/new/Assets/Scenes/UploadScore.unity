@@ -373,6 +373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuScreen: {fileID: 0}
+  howToPlay: {fileID: 0}
 --- !u!1 &319466664
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,7 +415,8 @@ MonoBehaviour:
   warningRegisterText: {fileID: 0}
   usernameDisplayField: {fileID: 648382865}
   usernameField: {fileID: 545529950}
-  scoreField: {fileID: 750587379}
+  scoreField: {fileID: 0}
+  scoreInputField: {fileID: 378555830}
   scoreElement: {fileID: 0}
   scoreboardContent: {fileID: 0}
   myUID: {fileID: 0}
