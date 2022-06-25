@@ -34,17 +34,17 @@ public class DefenceBar : MonoBehaviour
         {
             case "Armor_Basic":
                 Debug.Log("add armor stats1");
-                DefenceBarAdjustment(10);
+                DefenceBarAdjustment(20);
                 SwitchPart.SwapArmor(0);
                 break;
             case "Armor_Dodge":
                 Debug.Log("add armor stats2");
-                DefenceBarAdjustment(30);
+                DefenceBarAdjustment(45);
                 SwitchPart.SwapArmor(1);
                 break;
             case "Armor_Knight":
                 Debug.Log("add armor stats3");
-                DefenceBarAdjustment(60);
+                DefenceBarAdjustment(65);
                 SwitchPart.SwapArmor(2);
                 break;
             case "Armor_Strong":

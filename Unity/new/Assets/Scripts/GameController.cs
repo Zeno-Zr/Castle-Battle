@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
 {
 
     public GameObject pauseMenuScreen;
+    public GameObject howToPlay;
 
     public void PauseGame()
     {
@@ -25,6 +26,16 @@ public class GameController : MonoBehaviour
     public void ReturnToMainMenu()
     {
         SceneManager.LoadScene("Menu");
+    }
+
+    public void HowToPlay()
+    {
+        howToPlay.SetActive(true);
+    }
+
+    public void GoBack()
+    {
+        howToPlay.SetActive(false);
     }
 
 
