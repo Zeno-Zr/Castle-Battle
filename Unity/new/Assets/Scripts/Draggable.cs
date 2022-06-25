@@ -86,7 +86,7 @@ public class Draggable : MonoBehaviour
 
         Draggable collidedDraggable = other.GetComponent<Draggable>();
 
-        if (other.CompareTag("Platform") || other.CompareTag("player") || other.CompareTag("Portal") || other.CompareTag("Finish") || other.CompareTag("Sign") || other.CompareTag("Death") || other.CompareTag("Untagged") || other.CompareTag("Enemy") || other.CompareTag("Damage"))
+        if (other.CompareTag("Platform") || other.CompareTag("player") || other.CompareTag("Portal") || other.CompareTag("Finish") || other.CompareTag("Sign") || other.CompareTag("Death") || other.CompareTag("Untagged") || other.CompareTag("Enemy") || other.CompareTag("Damage") || other.CompareTag("Battery"))
         {
             // do nothing
         }

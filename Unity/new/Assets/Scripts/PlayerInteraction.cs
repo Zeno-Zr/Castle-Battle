@@ -30,6 +30,7 @@ public class PlayerInteraction : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
+        /*
         //If player collide with a trigger collider with the Coin tag, add 100 to score and destroy the coin
         if (collision.CompareTag("coin"))
         {
@@ -37,6 +38,7 @@ public class PlayerInteraction : MonoBehaviour
             scoreText.text = score.ToString();
             Destroy(collision.gameObject);
         }
+        */
 
         //If player collide with a battery, record player has the battery and thus able to power the portal on
         if (collision.CompareTag("Battery"))
