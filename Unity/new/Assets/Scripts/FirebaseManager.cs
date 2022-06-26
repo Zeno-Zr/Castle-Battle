@@ -413,7 +413,7 @@ public class FirebaseManager : MonoBehaviour
 
             foreach (DataSnapshot childSnapshot in snapshot.Children.Reverse<DataSnapshot>())
             {
-                if(friendsList.Child(childSnapshot.Child("username").Key).Exists)
+                if(friendsList.Child(childSnapshot.Key).Exists)
                 {
                     string username = childSnapshot.Child("username").Value.ToString();
                     int score = int.Parse(childSnapshot.Child("score").Value.ToString());
@@ -422,7 +422,7 @@ public class FirebaseManager : MonoBehaviour
 
                     GameObject scoreboardElement = Instantiate(scoreElement, scoreboardContent);
                     scoreboardElement.GetComponent<ScoreElement>().NewScoreElement(username, score);
-                    scoreboardElement.GetComponent<ScoreElement>().RecordFriendUID(childSnapshot.Child("username").Key);
+                    scoreboardElement.GetComponent<ScoreElement>().RecordFriendUID(childSnapshot.Key);
                 }
             }
             friendsScreenElements.SetActive(false);
