@@ -20,6 +20,10 @@ public class PlayerAttack : MonoBehaviour
     public Transform shotPoint;
     public bool isLeft = true;
 
+    public SpecialAttack specialAttack;
+
+    public float increaseAttack;
+
 
     // Update is called once per frame
     void Update()
@@ -28,6 +32,7 @@ public class PlayerAttack : MonoBehaviour
         {
             if (IsPlayerAttacking)
             {
+                /*
                 if (!attackValue.IsRangedWeapon)
                 {
                     Debug.Log("working melee");
@@ -38,9 +43,10 @@ public class PlayerAttack : MonoBehaviour
                         Debug.Log("aa");
                     }
                 }
-                else if (attackValue.IsRangedWeapon)
+                */
+                if (attackValue.IsRangedWeapon)
                 {
-                    
+
                     Debug.Log("working ranged");
                     if (isLeft)
                     {
@@ -86,6 +92,31 @@ public class PlayerAttack : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPos.position, attackRange);
+    }
+
+
+    public void SpecialAttack(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Debug.Log("player is special attacking!");
+
+            if (specialAttack.ChargingAmount == specialAttack.maxCharge && specialAttack.ChargingAmount != 0)
+            {
+                Debug.Log("player is activating special!");
+                attackValue.SpecialAttackValue();
+                specialAttack.Resetting();
+
+            }
+
+            if (context.canceled)
+            {
+                Debug.Log("player stopped special attacking!");
+            }
+
+        }
+
+
     }
 
 

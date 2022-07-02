@@ -23,6 +23,7 @@ TagManager:
   - Damage
   - Enemy
   - Sign
+  - Charge
   layers:
   - Default
   - TransparentFX

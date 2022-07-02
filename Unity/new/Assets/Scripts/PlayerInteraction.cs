@@ -14,6 +14,7 @@ public class PlayerInteraction : MonoBehaviour
     public PowerOn powerOn;
 
     public HealthBar health;
+    public SpecialAttack specialAttack;
 
     public TextMeshProUGUI DisplayInteract;
 
@@ -65,6 +66,13 @@ public class PlayerInteraction : MonoBehaviour
             health.TakeDamage(50);
             //Destroy(collision.gameObject);
         }
+
+        if (collision.CompareTag("Charge"))
+        {
+            specialAttack.Charging(20);
+            //Destroy(collision.gameObject);
+        }
+
     }
 
     public void OpenInteractable()
