@@ -6,6 +6,8 @@ public class SpecialAttack : MonoBehaviour
 
     public Image SpecialAttackBar;
 
+    public GameObject ReadyText;
+    public GameObject ChargingText;
 
     public float ChargingAmount = 0;
     public float minCharge = 0;
@@ -18,6 +20,8 @@ public class SpecialAttack : MonoBehaviour
         ChargingAmount = Mathf.Clamp(ChargingAmount, minCharge, maxCharge);
         SpecialAttackBar.fillAmount = ChargingAmount / maxCharge;
         SpecialAttackBar.gameObject.SetActive(false);
+        ChargingText.SetActive(true);
+        ReadyText.SetActive(false);
 
     }
 
@@ -50,6 +54,17 @@ public class SpecialAttack : MonoBehaviour
         ChargingAmount += value;
         ChargingAmount = Mathf.Clamp(ChargingAmount, minCharge, maxCharge);
         SpecialAttackBar.fillAmount = ChargingAmount / maxCharge;
+
+        if (ChargingAmount == maxCharge)
+        {
+            ReadyText.SetActive(true);
+            ChargingText.SetActive(false);
+        }
+        else
+        {
+            ChargingText.SetActive(true);
+            ReadyText.SetActive(false);
+        }
     }
 
     public void Resetting()
@@ -57,6 +72,8 @@ public class SpecialAttack : MonoBehaviour
         ChargingAmount = 0;
         ChargingAmount = Mathf.Clamp(ChargingAmount, minCharge, maxCharge);
         SpecialAttackBar.fillAmount = ChargingAmount / maxCharge;
+        ChargingText.SetActive(true);
+        ReadyText.SetActive(false);
     }
     
 }

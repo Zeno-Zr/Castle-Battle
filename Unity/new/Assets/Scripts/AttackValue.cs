@@ -22,6 +22,10 @@ public class AttackValue : MonoBehaviour
 
     public GameObject SpecialAttackAura;
 
+    public GameObject Pistol;
+    public GameObject Shotgun;
+    public GameObject Rifle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +47,7 @@ public class AttackValue : MonoBehaviour
             ChangeAttackValue(WeaponTag);
             SpecialAttackAura.SetActive(false);
         }
-        
+
 
     }
 
@@ -64,23 +68,29 @@ public class AttackValue : MonoBehaviour
                 Debug.Log("add weapon stats1");
                 SwitchPart.SwapWeapon(0);
                 specialAttack.ChangeMaxAmount(100);
+                Pistol.SetActive(true);
                 break;
             case "Weapon_Shotgun":
                 ChangeAttacktext(13);
                 Debug.Log("add weapon stats2");
                 SwitchPart.SwapWeapon(1);
                 specialAttack.ChangeMaxAmount(50);
+                Shotgun.SetActive(true);
                 break;
             case "Weapon_Rifle":
                 ChangeAttacktext(21);
                 Debug.Log("add weapon stats3");
                 SwitchPart.SwapWeapon(2);
                 specialAttack.ChangeMaxAmount(25);
+                Rifle.SetActive(true);
                 break;
             default:
                 ChangeAttacktext(0);
                 SwitchPart.SwapWeapon(0);
                 specialAttack.ChangeMaxAmount(0);
+                Pistol.SetActive(false);
+                Shotgun.SetActive(false);
+                Rifle.SetActive(false);
                 break;
         }
     }
@@ -92,15 +102,12 @@ public class AttackValue : MonoBehaviour
         {
             case "Weapon_Pistol":
                 ChangeAttacktext(7 + 5);
-                Debug.Log("pistol");
                 break;
             case "Weapon_Shotgun":
                 ChangeAttacktext(13 + 9);
-                Debug.Log("shot");
                 break;
             case "Weapon_Rifle":
                 ChangeAttacktext(21 + 13);
-                Debug.Log("rifle");
                 break;
             default:
                 ChangeAttacktext(0);
@@ -113,9 +120,9 @@ public class AttackValue : MonoBehaviour
 
 
 
-        
 
-        
+
+
 
     }
 }
