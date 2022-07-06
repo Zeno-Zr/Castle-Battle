@@ -48,6 +48,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SandLevel 3.unity
     guid: 237fb7b79c38f4141a59d9ec6fcbab58
   - enabled: 1
+    path: Assets/Scenes/FinalLevel.unity
+    guid: 4307910a904cb574e890f352be9127e9
+  - enabled: 1
     path: Assets/Scenes/End.unity
     guid: 776d1de821a82a94eba641f1e6336f5b
   m_configObjects:
