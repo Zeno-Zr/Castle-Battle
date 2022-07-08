@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerAttributes : MonoBehaviour
 {
     public int stageCompleted = 0;
     public int currentHealth = 50;
     public int maxHealth = 100;
+    public string lastScene;
 
     //armors obtained in story mode
     public bool basicObtained = false;
@@ -21,6 +23,7 @@ public class PlayerAttributes : MonoBehaviour
 
     public void SavePlayer()
     {
+        lastScene = SceneManager.GetActiveScene().name;
         SaveSystem.SavePlayer(this);
     }
     public void LoadPlayer()

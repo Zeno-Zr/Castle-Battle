@@ -8,6 +8,7 @@ public class PlayerData
     public int stageCompleted;
     public int currentHealth;
     public int maxHealth;
+    public string lastActiveScene;
     public bool[] armors;
     public bool[] weapons;
 
@@ -16,6 +17,7 @@ public class PlayerData
         stageCompleted = player.stageCompleted;
         currentHealth = player.currentHealth;
         maxHealth = player.maxHealth;
+        lastActiveScene = player.lastScene;
         armors = new bool[4];
         armors[0] = player.basicObtained;
         armors[1] = player.knightObtained;
