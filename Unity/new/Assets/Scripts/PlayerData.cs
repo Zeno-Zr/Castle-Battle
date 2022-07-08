@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData
 {
+    //add variables to save
     public int stageCompleted;
     public int currentHealth;
     public int maxHealth;
@@ -14,6 +15,7 @@ public class PlayerData
 
     public PlayerData (PlayerAttributes player)
     {
+        //add corresponding variables for save file
         stageCompleted = player.stageCompleted;
         currentHealth = player.currentHealth;
         maxHealth = player.maxHealth;

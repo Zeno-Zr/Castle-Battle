@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerAttributes : MonoBehaviour
 {
+    //add variables to save
     public int stageCompleted = 0;
     public int currentHealth = 50;
     public int maxHealth = 100;
@@ -23,15 +24,18 @@ public class PlayerAttributes : MonoBehaviour
 
     public void SavePlayer()
     {
+        //add functions to get values or write directly
         lastScene = SceneManager.GetActiveScene().name;
         SaveSystem.SavePlayer(this);
     }
     public void LoadPlayer()
     {
+        //add corresponding variable to load from save file
         PlayerData data = SaveSystem.LoadPlayer();
         stageCompleted = data.stageCompleted;
         currentHealth = data.currentHealth;
         maxHealth = data.maxHealth;
+        lastScene = data.lastActiveScene;
 
         basicObtained = data.armors[0];
         knightObtained = data.armors[1];
