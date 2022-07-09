@@ -5,9 +5,11 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData
 {
+    //add variables to save
     public int stageCompleted;
     public float currentHealth;
     public float maxHealth;
+    public string lastActiveScene;
     public bool[] armors;
     public bool[] weapons;
 
@@ -16,16 +18,17 @@ public class PlayerData
 
     public PlayerData(PlayerAttributes player)
     {
+        //add corresponding variables for save file
         stageCompleted = player.stageCompleted;
         currentHealth = player.currentHealth;
         maxHealth = player.maxHealth;
+        lastActiveScene = player.lastScene;
 
         weaponTag = player.weaponTag;
         armorTag = player.armorTag;
     }
 
     /*
-             armors = new bool[4];
         armors[0] = player.basicObtained;
         armors[1] = player.knightObtained;
         armors[2] = player.dodgeObtained;

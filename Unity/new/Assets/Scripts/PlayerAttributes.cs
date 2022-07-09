@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerAttributes : MonoBehaviour
 {
+    //add variables to save
     public int stageCompleted = 0;
     public float currentHealth = 100;
     public float maxHealth = 100;
+    public string lastScene;
 
 
     public string weaponTag;
@@ -15,20 +18,24 @@ public class PlayerAttributes : MonoBehaviour
 
     public void SavePlayer()
     {
+        //add functions to get values or write directly
         UpdateArmor();
         UpdateHealth();
         UpdateWeapon();
         UpdateStageComplete();
+        lastScene = SceneManager.GetActiveScene().name;
         SaveSystem.SavePlayer(this);
     }
     public void LoadPlayer()
     {
+        //add corresponding variable to load from save file
         PlayerData data = SaveSystem.LoadPlayer();
         stageCompleted = data.stageCompleted;
         currentHealth = data.currentHealth;
         maxHealth = data.maxHealth;
         weaponTag = data.weaponTag;
         armorTag = data.armorTag;
+        lastScene = data.lastActiveScene;
     }
 
 

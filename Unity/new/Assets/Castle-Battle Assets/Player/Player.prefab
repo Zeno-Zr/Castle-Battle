@@ -386,7 +386,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8585162452683306292, guid: 638c51a874417ad4cb891b99f37c4551, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8585162452683306295, guid: 638c51a874417ad4cb891b99f37c4551, type: 3}
       propertyPath: m_RootOrder
@@ -843,6 +843,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: d56832c8-3b26-4919-9825-338adf5331a8
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 718afc78-77d5-4c59-967e-b066b69a355d
+    m_ActionName: Player/Special Attack
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
@@ -871,6 +875,8 @@ MonoBehaviour:
   projectile: {fileID: 1003282853830814440, guid: 5dd0307e86e951b48bfded6307c84283, type: 3}
   shotPoint: {fileID: 6401240455241472053}
   isLeft: 0
+  specialAttack: {fileID: 0}
+  increaseAttack: 0
 --- !u!114 &1138183144349246681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -886,6 +892,8 @@ MonoBehaviour:
   scoreText: {fileID: 0}
   powerOn: {fileID: 0}
   health: {fileID: 0}
+  specialAttack: {fileID: 0}
+  DisplayInteract: {fileID: 0}
 --- !u!114 &6798833072838533940
 MonoBehaviour:
   m_ObjectHideFlags: 0

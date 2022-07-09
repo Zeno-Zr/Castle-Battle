@@ -339,6 +339,7 @@ public class FirebaseManager : MonoBehaviour
         {
             Debug.Log("Friend list updated");
         }
+        StartCoroutine(LoadScoreboardData());
     }
 
     private IEnumerator UpdateScore(int _score)
