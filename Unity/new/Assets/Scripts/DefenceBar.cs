@@ -11,6 +11,8 @@ public class DefenceBar : MonoBehaviour
     public float minDefence = 0;
     public float maxDefence = 100;
 
+    public string ArmorTag;
+
     public SwitchPart SwitchPart;
 
     private void Start()

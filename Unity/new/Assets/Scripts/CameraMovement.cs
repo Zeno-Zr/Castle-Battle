@@ -10,6 +10,8 @@ public class CameraMovement : MonoBehaviour
     private Vector2 threshold;
     private Rigidbody2D rb;
 
+    public Vector3 freezeZValue; //set it to lower than everything in the scene (e.g.: -10)
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +35,9 @@ public class CameraMovement : MonoBehaviour
         {
             newPosition.y = follow.y;
         }
+
+        newPosition.z = freezeZValue.z;
+
         float moveSpeed = rb.velocity.magnitude > speed ? rb.velocity.magnitude : speed;
         transform.position = Vector3.MoveTowards(transform.position, newPosition, moveSpeed * Time.deltaTime);
     }
@@ -50,4 +55,5 @@ public class CameraMovement : MonoBehaviour
         Vector2 border = calculateThreshold();
         Gizmos.DrawWireCube(transform.position, new Vector3(border.x * 2, border.y * 2, 1));
     }
+
 }

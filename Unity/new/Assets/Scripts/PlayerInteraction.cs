@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    private int score = 0;
     private bool battery = false;
     public Text scoreText;
     public PowerOn powerOn;
@@ -17,6 +16,13 @@ public class PlayerInteraction : MonoBehaviour
     public SpecialAttack specialAttack;
 
     public TextMeshProUGUI DisplayInteract;
+
+
+    private void Start()
+    {
+        FindObjectOfType<PlayerAttributes>().LoadPlayer();
+        Debug.Log("end of loaded");
+    }
 
     /*
      * For items that will trigger upon touching the player. 
@@ -29,6 +35,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             //Restart the level
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Debug.Log("just reset");
         }
 
         /*

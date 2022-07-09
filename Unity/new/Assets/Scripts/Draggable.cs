@@ -100,6 +100,7 @@ public class Draggable : MonoBehaviour
             {
                 IsInsideArmorSlot = true;
                 ChangeDefence.GetComponent<DefenceBar>().ArmorDefence(_collider.tag);
+                ChangeDefence.GetComponent<DefenceBar>().ArmorTag = _collider.tag;
             }
         }
         else if (other.CompareTag("WeaponSlot") && IsAWeapon)
@@ -111,18 +112,6 @@ public class Draggable : MonoBehaviour
             else
             {
                 IsInsideWeaponSlot = true;
-                /*
-                switch (_collider.tag)
-                {
-                    case "Weapon_Pistol":
-                        Debug.Log("add weapon stats1");
-                        break;
-                    case "Weapon_Rifle":
-                        Debug.Log("add weapon stats2");
-                        break;
-                }
-                */
-                //ChangeAttack.GetComponent<AttackValue>().ChangeAttackValue(_collider.tag);
                 ChangeAttack.ChangeAttackValue(_collider.tag);
                 ChangeAttack.IsRangedWeapon = true;
                 ChangeAttack.WeaponTag = _collider.tag;
@@ -190,6 +179,7 @@ public class Draggable : MonoBehaviour
             }
 
             ChangeDefence.GetComponent<DefenceBar>().ArmorDefence(null);
+            ChangeDefence.GetComponent<DefenceBar>().ArmorTag = null;
 
         }
 

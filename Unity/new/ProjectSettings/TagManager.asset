@@ -24,6 +24,7 @@ TagManager:
   - Enemy
   - Sign
   - Charge
+  - GM
   layers:
   - Default
   - TransparentFX
