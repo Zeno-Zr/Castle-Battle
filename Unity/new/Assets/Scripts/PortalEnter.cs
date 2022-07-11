@@ -9,6 +9,12 @@ public class PortalEnter : Interactable
     {
         FindObjectOfType<PlayerAttributes>().SavePlayer();
         Debug.Log("portal is working");
+
+        SceneManager.MoveGameObjectToScene(FindObjectOfType<GameMaster>().gameObject, SceneManager.GetActiveScene());
+        SceneManager.MoveGameObjectToScene(FindObjectOfType<CheckpointList>().gameObject, SceneManager.GetActiveScene());
+        Object.Destroy(FindObjectOfType<GameMaster>());
+        Object.Destroy(FindObjectOfType<CheckpointList>());
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
     }

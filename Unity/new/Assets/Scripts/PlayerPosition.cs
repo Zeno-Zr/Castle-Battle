@@ -10,6 +10,7 @@ public class PlayerPosition : MonoBehaviour
     private void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
+        //check if it's next level or the same level (maybe use portal as a way to do so)
         transform.position = gm.lastCheckPointPos;
         mainCamera.GetComponent<CameraMovement>().transform.position = gm.lastCheckPointPos;
 
