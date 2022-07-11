@@ -35,6 +35,7 @@ public class MobProjectileController : MonoBehaviour
         if (Physics2D.OverlapCircle(transform.position, bulletRadius, playerLayer))
         {
             Destroy(this.gameObject);
+            //FindObjectOfType<HealthBar>().TakeDamage(40);
         }
     }
 

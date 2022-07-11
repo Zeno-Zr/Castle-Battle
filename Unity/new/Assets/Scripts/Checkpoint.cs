@@ -14,13 +14,13 @@ public class Checkpoint : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("player") && transform.gameObject.GetComponent<SpriteRenderer>().sprite != GetComponentInParent<CheckpointList>().greenFlag)
+        if (other.CompareTag("Player") && transform.gameObject.GetComponent<SpriteRenderer>().sprite != GetComponentInParent<CheckpointList>().greenFlag)
         {
             gm.lastCheckPointPos = transform.position;
             GetComponentInParent<CheckpointList>().ChangeAllCheckpointsToRed();
 
             transform.gameObject.GetComponent<SpriteRenderer>().sprite = GetComponentInParent<CheckpointList>().greenFlag;
-            Debug.Log("AA");
+            Debug.Log("changed checkpoint sprite");
 
             FindObjectOfType<PlayerAttributes>().SavePlayer();
 

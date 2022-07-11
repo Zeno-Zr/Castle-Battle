@@ -70,6 +70,7 @@ public class PlayerInteraction : MonoBehaviour
 
         if (collision.CompareTag("Damage"))
         {
+            Debug.Log("player taking damage");
             health.TakeDamage(50);
             //Destroy(collision.gameObject);
         }
