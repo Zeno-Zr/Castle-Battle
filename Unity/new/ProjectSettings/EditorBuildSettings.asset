@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 1bf4e27024bdab04b9ce3a4c3b63043a
   - enabled: 1
-    path: Assets/Scenes/BasicLevel1.unity
+    path: Assets/Scenes/SandBoxScenes/BasicLevel1.unity
     guid: 375594e4175e76a4283cfa09637efd41
   - enabled: 1
     path: Assets/Scenes/BasicLevel2.unity

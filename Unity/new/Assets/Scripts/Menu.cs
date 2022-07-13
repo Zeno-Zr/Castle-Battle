@@ -37,10 +37,10 @@ public class Menu : MonoBehaviour
         SceneManager.LoadSceneAsync("FriendsAndAchievements");
     }
 
-    public void TempScorePageButton()
+    public void SandBoxMinigame()
     {
-        //Load the temp score scene
-        SceneManager.LoadScene("UploadScore");
+        //Load the sandbox select scene
+        SceneManager.LoadScene("SandBoxEntrence");
     }
 
     public void HowToPlayOpen()
