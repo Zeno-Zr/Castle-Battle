@@ -510,6 +510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuScreen: {fileID: 0}
+  howToPlay: {fileID: 0}
 --- !u!1 &319466664
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,6 +553,7 @@ MonoBehaviour:
   usernameDisplayField: {fileID: 0}
   usernameField: {fileID: 0}
   scoreField: {fileID: 0}
+  scoreInputField: {fileID: 0}
   scoreElement: {fileID: 0}
   scoreboardContent: {fileID: 0}
   myUID: {fileID: 0}
@@ -996,19 +998,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 911762459}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 310962665}
-        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: TempScorePageButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &911762459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1481,7 +1471,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 310962665}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: TempScorePageButton
+        m_MethodName: SandBoxMinigame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
