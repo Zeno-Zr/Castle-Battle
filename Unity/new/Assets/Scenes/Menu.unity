@@ -510,6 +510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuScreen: {fileID: 0}
+  howToPlay: {fileID: 0}
 --- !u!1 &319466664
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,6 +553,7 @@ MonoBehaviour:
   usernameDisplayField: {fileID: 0}
   usernameField: {fileID: 0}
   scoreField: {fileID: 0}
+  scoreInputField: {fileID: 0}
   scoreElement: {fileID: 0}
   scoreboardContent: {fileID: 0}
   myUID: {fileID: 0}
@@ -996,19 +998,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 911762459}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 310962665}
-        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: TempScorePageButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &911762459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1316,6 +1306,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988457779}
   m_CullTransparentMesh: 1
+--- !u!1 &1138481956
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1138481959}
+  - component: {fileID: 1138481958}
+  - component: {fileID: 1138481957}
+  - component: {fileID: 1138481960}
+  m_Layer: 0
+  m_Name: AchievementsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1138481957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138481956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3092555db6ffa2c409511d8ac2ceffb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Detail: []
+  obtained: 
+  endlessPlayed: 0
+--- !u!114 &1138481958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138481956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eb6c4129af670545834b120561b2da4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1138481959
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138481956}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1138481960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138481956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 348b1230bcd5685409d7a830060b2c89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1167740577
 GameObject:
   m_ObjectHideFlags: 0
@@ -1481,7 +1544,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 310962665}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: TempScorePageButton
+        m_MethodName: SandBoxMinigame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
