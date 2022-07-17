@@ -8,8 +8,11 @@ public class PlayerAchievements : MonoBehaviour
     public bool[] obtained;
     public int endlessPlayed = 0;
 
-    void awake()
+    void Awake()
     {
+        Detail = new string[10];
+        obtained = new bool[10];
+        
         Detail[0] = "Complete Earth Levels";
         Detail[1] = "Complete Scifi Levels";
         Detail[2] = "Complete Desert Levels";
