@@ -19,6 +19,14 @@ public class PlayerPosition : MonoBehaviour
         string weaponTag = FindObjectOfType<PlayerAttributes>().weaponTag;
         string armorTag = FindObjectOfType<PlayerAttributes>().armorTag;
 
+        //check battery
+        if (FindObjectOfType<PlayerAttributes>().hasBattery)
+        {
+            FindObjectOfType<PlayerInteraction>().battery = FindObjectOfType<PlayerAttributes>().hasBattery;
+            GameObject battery = GameObject.FindGameObjectWithTag("Battery");
+            battery.SetActive(false);
+        }
+
         GameObject weaponEquipped;
         GameObject armorEquipped;
 

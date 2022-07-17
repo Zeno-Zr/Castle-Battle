@@ -998,7 +998,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 911762459}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 310962665}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: EndlessMiniGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &911762459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2747,3 +2759,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2048489954}
   m_CullTransparentMesh: 1
+--- !u!1001 &8474457741536840010
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8474457743318939752, guid: 76adef7efe5324e4c96d9715907ed2bb, type: 3}
+      propertyPath: m_Name
+      value: IsEndless
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474457743318939758, guid: 76adef7efe5324e4c96d9715907ed2bb, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474457743318939758, guid: 76adef7efe5324e4c96d9715907ed2bb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 319.8889
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474457743318939758, guid: 76adef7efe5324e4c96d9715907ed2bb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 167.1442
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474457743318939758, guid: 76adef7efe5324e4c96d9715907ed2bb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.8825326
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474457743318939758, guid: 76adef7efe5324e4c96d9715907ed2bb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474457743318939758, guid: 76adef7efe5324e4c96d9715907ed2bb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474457743318939758, guid: 76adef7efe5324e4c96d9715907ed2bb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474457743318939758, guid: 76adef7efe5324e4c96d9715907ed2bb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474457743318939758, guid: 76adef7efe5324e4c96d9715907ed2bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474457743318939758, guid: 76adef7efe5324e4c96d9715907ed2bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474457743318939758, guid: 76adef7efe5324e4c96d9715907ed2bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 76adef7efe5324e4c96d9715907ed2bb, type: 3}

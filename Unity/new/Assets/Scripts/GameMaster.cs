@@ -6,6 +6,7 @@ public class GameMaster : MonoBehaviour
 {
     private static GameMaster instance;
     public Vector3 lastCheckPointPos;
+    public GameObject IsEndless;
 
     private void Awake()
     {
@@ -17,6 +18,14 @@ public class GameMaster : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+
+        if (GameObject.Find("IsEndless") == null)
+        {
+            Debug.Log("spawned endless object");
+            Instantiate(IsEndless, transform.position, Quaternion.identity);
+            Debug.Log("changed name to IsEndless");
+            FindObjectOfType<IsEndless>().name = "IsEndless";
         }
     }
 }

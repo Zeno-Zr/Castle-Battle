@@ -23,6 +23,9 @@ public class Menu : MonoBehaviour
     public void StartButton()
     {
         //Load the next scene
+        FindObjectOfType<IsEndless>().IsEndlessMode = false;
+        DontDestroyOnLoad(FindObjectOfType<IsEndless>());
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -51,5 +54,14 @@ public class Menu : MonoBehaviour
     public void HowToPlayFalse()
     {
         howToPlay.SetActive(false);
+    }
+
+    public void EndlessMiniGame()
+    {
+        FindObjectOfType<IsEndless>().IsEndlessMode = true;
+        DontDestroyOnLoad(FindObjectOfType<IsEndless>());
+
+        int index = Random.Range(3, 12);
+        SceneManager.LoadScene(index);
     }
 }

@@ -15,7 +15,27 @@ public class PortalEnter : Interactable
         Object.Destroy(FindObjectOfType<GameMaster>());
         Object.Destroy(FindObjectOfType<CheckpointList>());
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        DontDestroyOnLoad(FindObjectOfType<IsEndless>());
+
+        if (FindObjectOfType<IsEndless>().IsEndlessMode)
+        {
+            Debug.Log("next endless");
+            FindObjectOfType<IsEndless>().IsEndlessMode = true;
+
+            int index = Random.Range(3, 12);
+            SceneManager.LoadScene(index);
+
+        }
+        else
+        {
+            Debug.Log("next scene");
+            FindObjectOfType<IsEndless>().IsEndlessMode = false;
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+
+
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
     }
 }

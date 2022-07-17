@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    private bool battery = false;
+    public bool battery = false;
     public Text scoreText;
     public PowerOn powerOn;
 

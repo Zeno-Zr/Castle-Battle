@@ -11,9 +11,10 @@ public class PlayerAttributes : MonoBehaviour
     public float maxHealth = 100;
     public string lastScene;
 
-
     public string weaponTag;
     public string armorTag;
+    
+    public bool hasBattery;
 
 
     public void SavePlayer()
@@ -22,6 +23,7 @@ public class PlayerAttributes : MonoBehaviour
         UpdateArmor();
         UpdateHealth();
         UpdateWeapon();
+        TakenBattery();
         UpdateStageComplete();
         lastScene = SceneManager.GetActiveScene().name;
         SaveSystem.SavePlayer(this);
@@ -58,6 +60,11 @@ public class PlayerAttributes : MonoBehaviour
     public void UpdateStageComplete()
     {
 
+    }
+
+    public void TakenBattery()
+    {
+        hasBattery = FindObjectOfType<PlayerInteraction>().battery;
     }
 }
 

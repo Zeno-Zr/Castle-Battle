@@ -10,11 +10,13 @@ public class PlayerData
     public float currentHealth;
     public float maxHealth;
     public string lastActiveScene;
-    public bool[] armors;
-    public bool[] weapons;
+    //public bool[] armors;
+   // public bool[] weapons;
 
     public string weaponTag;
     public string armorTag;
+
+    public bool hasBattery;
 
     public PlayerData(PlayerAttributes player)
     {
@@ -26,6 +28,8 @@ public class PlayerData
 
         weaponTag = player.weaponTag;
         armorTag = player.armorTag;
+
+        hasBattery = player.hasBattery;
     }
 
     /*
