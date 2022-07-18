@@ -22,6 +22,9 @@ public class PortalEnter : Interactable
             Debug.Log("next endless");
             FindObjectOfType<IsEndless>().IsEndlessMode = true;
 
+            FindObjectOfType<CountdownTimer>().AddingScore();
+            FindObjectOfType<CountdownTimer>().AddTime(30);
+
             int index = Random.Range(3, 12);
             SceneManager.LoadScene(index);
 
