@@ -40,7 +40,7 @@ public class AchievementManager : MonoBehaviour
     void EndlessScoreCheck()
     {
         savedAchievements.endlessPlayed += 1;
-        TMP_Text scoreText = GameObject.Find("EndlessScore").GetComponent<TMP_Text>();
+        TMP_Text scoreText = GameObject.Find("EndlessGameOver/Highscore").GetComponent<TMP_Text>();
         int score = int.Parse(scoreText.text); 
         if (score >= 10)
         {
@@ -73,5 +73,19 @@ public class AchievementManager : MonoBehaviour
     void KilledEnemy()
     {
         savedAchievements.obtained[9] = true;
+    }
+
+    public void pressShareButton()
+    {
+        StartCoroutine(buttonRunning());
+    }
+
+    IEnumerator buttonRunning()
+    {
+        EndlessScoreCheck();
+        SceneManager.LoadScene("FriendsAndAchievements");
+        yield return new WaitUntil(() => SceneManager.GetActiveScene().name == "FriendsAndAchievements");
+        yield return new WaitUntil(() => SceneManager.GetActiveScene().isLoaded);
+        GameObject.Find("FirebaseManager").GetComponent<FirebaseManager>().SaveDataButton();
     }
 }

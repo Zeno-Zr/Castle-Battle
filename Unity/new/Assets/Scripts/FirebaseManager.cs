@@ -125,13 +125,16 @@ public class FirebaseManager : MonoBehaviour
 
     public void SaveDataButton()
     {
+        /*
         if(usernameField.text != null && usernameField.text != User.DisplayName)
         {
             StartCoroutine(UpdateUsernameAuth(usernameField.text));
             StartCoroutine(UpdateUsernameDatabase(usernameField.text));
         }
-        
-        StartCoroutine(UpdateScore(int.Parse(scoreInputField.text)));
+        */
+
+        TMP_Text scoreText = GameObject.Find("EndlessGameOver/Highscore").GetComponent<TMP_Text>();
+        StartCoroutine(UpdateScore(int.Parse(scoreText.text)));
     }
 
     public void LoadFriendsSceneButton()
