@@ -9,7 +9,7 @@ public class TankBossAttack : MonoBehaviour
     public LineRenderer lineRenderer;
 
     [SerializeField] private int bulletSalvoCount = 3;
-    [SerializeField] private float laserMaxRange = 20f;
+    //[SerializeField] private float laserMaxRange = 20f;
     [SerializeField] private float laserChargeTime = 3f;
     
     float intervalBetweenSalvo = 0.3f;
@@ -19,7 +19,7 @@ public class TankBossAttack : MonoBehaviour
     void Start()
     {
         attackPos = transform.Find("attackPos");
-        player = GameObject.Find("Player_armor").transform;
+        lineRenderer.useWorldSpace = true;
     }
 
     public void Attack()
@@ -39,34 +39,49 @@ public class TankBossAttack : MonoBehaviour
 
     public void EnragedAttack()
     {
+        player = GameObject.Find("Player_armor").transform;
+        
         //raycast draw aiming laser
-        Vector2 target = new Vector2(player.position.x, player.position.y);
-        if (Physics2D.Raycast(attackPos.position, target))
+        Vector2 direction = new Vector2((player.position.x - attackPos.position.x), (player.position.y - attackPos.position.y));
+        if (Physics2D.Raycast(attackPos.position, direction))
         {
-            RaycastHit2D _hit = Physics2D.Raycast(attackPos.position, target);
+            RaycastHit2D _hit = Physics2D.Raycast(attackPos.position, direction);
             Draw2DRay(attackPos.position, _hit.point);
+            Debug.Log("Tank Hit Target " + _hit.point);
+        
+            //instantiate damage laser
+            StartCoroutine(DamageLaser());
         }
-        else
-        {
-            Draw2DRay(attackPos.position, target.normalized * laserMaxRange);
-        }
-        //instantiate damage laser
-        StartCoroutine(DamageLaser());
     }
 
     void Draw2DRay(Vector2 startPos, Vector2 endPos)
     {
+        lineRenderer.positionCount = 2;
         lineRenderer.SetPosition(0, startPos);
         lineRenderer.SetPosition(1, endPos);
+        lineRenderer.startWidth = 0.1f;
+        lineRenderer.endWidth = 0.1f;
     }
 
     private IEnumerator DamageLaser()
     {
         yield return new WaitForSeconds(laserChargeTime);
-        //adjust linerenderer width
-        //set mesh collider
-        //set tag damage
-        //set linerenderer array null
-        lineRenderer.SetPosition(1, attackPos.position);
+        lineRenderer.startWidth = 0.3f;
+        lineRenderer.endWidth = 0.3f;
+
+        //create mesh from renderer
+        Mesh mesh = new Mesh();
+        lineRenderer.BakeMesh(mesh, true);
+
+        //add mesh collider
+        MeshCollider meshCollider = lineRenderer.gameObject.AddComponent<MeshCollider>();
+        meshCollider.sharedMesh = mesh;
+        //meshCollider.isTrigger = true;
+        gameObject.tag = "Damage";
+        yield return new WaitForSeconds(0.5f);
+
+        //clear linerenderer array
+        Destroy(meshCollider);
+        lineRenderer.positionCount = 0;
     }
 }
