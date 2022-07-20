@@ -34,9 +34,32 @@ public class PlayerInteraction : MonoBehaviour
         if (collision.CompareTag("Death"))
         {
             //Restart the level
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            Debug.Log("just reset");
+
+
+            if (FindObjectOfType<IsEndless>().IsEndlessMode)
+            {
+                FindObjectOfType<IsEndless>().IsEndlessMode = true;
+
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+            }
+            else
+            {
+                Debug.Log("just reset");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+            }
+
         }
+
+        /*
+        if (collision.CompareTag("score"))
+        {
+            //FindObjectOfType<CountdownTimer>().totalScore += 1;
+            FindObjectOfType<CountdownTimer>().AddingScore();
+
+        }
+        */
 
         /*
         //If player collide with a trigger collider with the Coin tag, add 100 to score and destroy the coin

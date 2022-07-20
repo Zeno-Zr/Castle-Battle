@@ -25,7 +25,6 @@ public class PlayerAttributes : MonoBehaviour
         UpdateWeapon();
         TakenBattery();
         UpdateStageComplete();
-        lastScene = SceneManager.GetActiveScene().name;
         SaveSystem.SavePlayer(this);
     }
     public void LoadPlayer()
@@ -59,7 +58,7 @@ public class PlayerAttributes : MonoBehaviour
 
     public void UpdateStageComplete()
     {
-
+        lastScene = SceneManager.GetActiveScene().name;
     }
 
     public void TakenBattery()

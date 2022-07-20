@@ -31,6 +31,21 @@ public class Menu : MonoBehaviour
 
     public void MainMenuButton()
     {
+        if (GameObject.Find("GameMaster") != null)
+        {
+            SceneManager.MoveGameObjectToScene(FindObjectOfType<GameMaster>().gameObject, SceneManager.GetActiveScene());
+        }
+        if (GameObject.Find("CheckpointList") != null)
+        {
+            SceneManager.MoveGameObjectToScene(FindObjectOfType<CheckpointList>().gameObject, SceneManager.GetActiveScene());
+
+        }
+        if (GameObject.Find("IsEndless") != null)
+        {
+            SceneManager.MoveGameObjectToScene(FindObjectOfType<IsEndless>().gameObject, SceneManager.GetActiveScene());
+        }
+
+
         //Load the main menu scene
         SceneManager.LoadScene("Menu");
     }
@@ -59,6 +74,7 @@ public class Menu : MonoBehaviour
     public void EndlessMiniGame()
     {
         FindObjectOfType<IsEndless>().IsEndlessMode = true;
+        FindObjectOfType<IsEndless>().lastScene = SceneManager.GetActiveScene().name;
         DontDestroyOnLoad(FindObjectOfType<IsEndless>());
 
         int index = Random.Range(3, 12);
