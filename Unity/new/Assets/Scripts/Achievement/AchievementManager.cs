@@ -83,9 +83,10 @@ public class AchievementManager : MonoBehaviour
     IEnumerator buttonRunning()
     {
         EndlessScoreCheck();
+        int submitScore = int.Parse(GameObject.Find("EndlessGameOver/Highscore").GetComponent<TMP_Text>().text);
         SceneManager.LoadScene("FriendsAndAchievements");
         yield return new WaitUntil(() => SceneManager.GetActiveScene().name == "FriendsAndAchievements");
         yield return new WaitUntil(() => SceneManager.GetActiveScene().isLoaded);
-        GameObject.Find("FirebaseManager").GetComponent<FirebaseManager>().SaveDataButton();
+        GameObject.Find("FirebaseManager").GetComponent<FirebaseManager>().SaveDataButton(submitScore);
     }
 }

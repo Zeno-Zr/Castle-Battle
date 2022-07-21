@@ -123,7 +123,7 @@ public class FirebaseManager : MonoBehaviour
         //ClearLoginRegisterFeilds();
     }
 
-    public void SaveDataButton()
+    public void SaveDataButton(int EndlessScore)
     {
         /*
         if(usernameField.text != null && usernameField.text != User.DisplayName)
@@ -133,8 +133,8 @@ public class FirebaseManager : MonoBehaviour
         }
         */
 
-        TMP_Text scoreText = GameObject.Find("EndlessGameOver/Highscore").GetComponent<TMP_Text>();
-        StartCoroutine(UpdateScore(int.Parse(scoreText.text)));
+        //TMP_Text scoreText = GameObject.Find("EndlessGameOver/Highscore").GetComponent<TMP_Text>();
+        StartCoroutine(UpdateScore(EndlessScore));
     }
 
     public void LoadFriendsSceneButton()
