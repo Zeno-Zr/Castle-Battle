@@ -26,6 +26,8 @@ public class Menu : MonoBehaviour
         FindObjectOfType<IsEndless>().IsEndlessMode = false;
         DontDestroyOnLoad(FindObjectOfType<IsEndless>());
 
+        FindObjectOfType<Music>().PlayMusic();
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
