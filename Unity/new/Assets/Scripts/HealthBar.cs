@@ -34,6 +34,7 @@ public class HealthBar : MonoBehaviour
         }
 
         healthBar.fillAmount = healthAmount / maxHealth;
+        FindObjectOfType<SFX>().TakingDamage();
     }
 
     public void Healing(float healPoints)

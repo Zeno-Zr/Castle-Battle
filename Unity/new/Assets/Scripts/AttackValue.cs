@@ -46,6 +46,7 @@ public class AttackValue : MonoBehaviour
             IsUsingSpecialAttack = false;
             ChangeAttackValue(WeaponTag);
             SpecialAttackAura.SetActive(false);
+            FindObjectOfType<SFX>().ChargeDeactivate();
         }
 
 

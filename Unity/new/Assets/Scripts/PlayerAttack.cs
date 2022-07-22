@@ -59,6 +59,7 @@ public class PlayerAttack : MonoBehaviour
                         Instantiate(projectile, shotPoint.position, shotPoint.rotation);
                     }
 
+
                 }
 
                 timeBtwAttack = startTimeBtwAttack;
@@ -79,6 +80,7 @@ public class PlayerAttack : MonoBehaviour
             Debug.Log("player is attacking!");
 
             IsPlayerAttacking = true;
+            FindObjectOfType<SFX>().Attacking();
         }
 
         if (context.canceled)

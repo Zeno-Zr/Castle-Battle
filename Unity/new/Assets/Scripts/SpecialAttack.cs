@@ -74,6 +74,7 @@ public class SpecialAttack : MonoBehaviour
         SpecialAttackBar.fillAmount = ChargingAmount / maxCharge;
         ChargingText.SetActive(true);
         ReadyText.SetActive(false);
+        FindObjectOfType<SFX>().ChargeActivate();
     }
     
 }

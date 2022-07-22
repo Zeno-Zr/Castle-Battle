@@ -29,10 +29,12 @@ public class UIManager : MonoBehaviour
     {
         loginUI.SetActive(true);
         registerUI.SetActive(false);
+        FindObjectOfType<SFX>().Click();
     }
     public void RegisterScreen() // Regester button
     {
         loginUI.SetActive(false);
         registerUI.SetActive(true);
+        FindObjectOfType<SFX>().Click();
     }
 }

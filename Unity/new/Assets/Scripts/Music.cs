@@ -45,9 +45,9 @@ public class Music : MonoBehaviour
             Debug.Log("played basic");
             BasicLevels();
         }
-        else if (SceneManager.GetActiveScene().name == "SciFiNew 1"
-            || SceneManager.GetActiveScene().name == "SciFiNew 2"
-            || SceneManager.GetActiveScene().name == "SciFiNew 3")
+        else if (SceneManager.GetActiveScene().name == "ScifiNew 1"
+            || SceneManager.GetActiveScene().name == "ScifiNew 2"
+            || SceneManager.GetActiveScene().name == "ScifiNew 3")
         {
             Debug.Log("played scifi");
             SciFiLevels();
@@ -77,7 +77,7 @@ public class Music : MonoBehaviour
 
     public void Menu()
     {
-        menu.PlayOneShot(menu.GetComponent<AudioSource>().clip);
+        menu.PlayOneShot(menu.clip);
         basicLevels.Stop();
         sciFiLevels.Stop();
         sandLevels.Stop();
@@ -87,7 +87,7 @@ public class Music : MonoBehaviour
     public void BasicLevels()
     {
         menu.Stop();
-        basicLevels.PlayOneShot(basicLevels.GetComponent<AudioSource>().clip);
+        basicLevels.PlayOneShot(basicLevels.clip);
         sciFiLevels.Stop();
         sandLevels.Stop();
         finalBoss.Stop();
@@ -98,7 +98,7 @@ public class Music : MonoBehaviour
     {
         menu.Stop();
         basicLevels.Stop();
-        sciFiLevels.PlayOneShot(sciFiLevels.GetComponent<AudioSource>().clip);
+        sciFiLevels.PlayOneShot(sciFiLevels.clip);
         sandLevels.Stop();
         finalBoss.Stop();
 
@@ -109,7 +109,7 @@ public class Music : MonoBehaviour
         menu.Stop();
         basicLevels.Stop();
         sciFiLevels.Stop();
-        sandLevels.PlayOneShot(sandLevels.GetComponent<AudioSource>().clip);
+        sandLevels.PlayOneShot(sandLevels.clip);
         finalBoss.Stop();
 
     }
@@ -120,6 +120,6 @@ public class Music : MonoBehaviour
         basicLevels.Stop();
         sciFiLevels.Stop();
         sandLevels.Stop();
-        finalBoss.PlayOneShot(finalBoss.GetComponent<AudioSource>().clip);
+        finalBoss.PlayOneShot(finalBoss.clip);
     }
 }

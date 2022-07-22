@@ -94,23 +94,27 @@ public class FirebaseManager : MonoBehaviour
     {
         //Call the login coroutine passing the email and password
         StartCoroutine(Login(emailLoginField.text, passwordLoginField.text));
+        FindObjectOfType<SFX>().Click();
     }
 
     //Function for the login button
     public void RegisterButton()
     {
         StartCoroutine(Register(emailRegisterField.text, passwordRegisterField.text, usernameRegisterField.text));
+        FindObjectOfType<SFX>().Click();
     }
 
     //Function for the add friends button
     public void AddFriendsButton()
     {
         StartCoroutine(UpdateFriendsList(friendsUIDField.text, true));
+        FindObjectOfType<SFX>().Click();
     }
 
     public void RemoveFriendsButton(string placeholderUID)
     {
         StartCoroutine(UpdateFriendsList(placeholderUID, null));
+        FindObjectOfType<SFX>().Click();
     }
 
     public void SignOutButton()
@@ -121,6 +125,7 @@ public class FirebaseManager : MonoBehaviour
         CorrectEmail = null;
         CorrectPassword = null;
         //ClearLoginRegisterFeilds();
+        FindObjectOfType<SFX>().Click();
     }
 
     public void SaveDataButton(int EndlessScore)
@@ -135,12 +140,14 @@ public class FirebaseManager : MonoBehaviour
 
         //TMP_Text scoreText = GameObject.Find("EndlessGameOver/Highscore").GetComponent<TMP_Text>();
         StartCoroutine(UpdateScore(EndlessScore));
+        FindObjectOfType<SFX>().Click();
     }
 
     public void LoadFriendsSceneButton()
     {
         StartCoroutine(LoadUserData());
         StartCoroutine(LoadScoreboardData());
+        FindObjectOfType<SFX>().Click();
     }
 
     public void CopyUID()

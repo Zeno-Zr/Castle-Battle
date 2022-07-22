@@ -12,12 +12,14 @@ public class Menu : MonoBehaviour
     {
         Time.timeScale = 0;
         pauseMenuScreen.SetActive(true);
+        FindObjectOfType<SFX>().Click();
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1;
         pauseMenuScreen.SetActive(false);
+        FindObjectOfType<SFX>().Click();
     }
 
     public void StartButton()
@@ -27,6 +29,7 @@ public class Menu : MonoBehaviour
         DontDestroyOnLoad(FindObjectOfType<IsEndless>());
 
         FindObjectOfType<Music>().PlayMusic();
+        FindObjectOfType<SFX>().Click();
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
@@ -47,6 +50,8 @@ public class Menu : MonoBehaviour
             SceneManager.MoveGameObjectToScene(FindObjectOfType<IsEndless>().gameObject, SceneManager.GetActiveScene());
         }
 
+        FindObjectOfType<SFX>().Click();
+
 
         //Load the main menu scene
         SceneManager.LoadScene("Menu");
@@ -55,22 +60,26 @@ public class Menu : MonoBehaviour
     public void FriendsScreenButton()
     {
         SceneManager.LoadSceneAsync("FriendsAndAchievements");
+        FindObjectOfType<SFX>().Click();
     }
 
     public void SandBoxMinigame()
     {
         //Load the sandbox select scene
         SceneManager.LoadScene("SandBoxEntrence");
+        FindObjectOfType<SFX>().Click();
     }
 
     public void HowToPlayOpen()
     {
         howToPlay.SetActive(true);
+        FindObjectOfType<SFX>().Click();
     }
 
     public void HowToPlayFalse()
     {
         howToPlay.SetActive(false);
+        FindObjectOfType<SFX>().Click();
     }
 
     public void EndlessMiniGame()
@@ -81,5 +90,6 @@ public class Menu : MonoBehaviour
 
         int index = Random.Range(3, 12);
         SceneManager.LoadScene(index);
+        FindObjectOfType<SFX>().Click();
     }
 }

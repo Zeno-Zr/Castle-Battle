@@ -746,7 +746,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 50b27d506fdb9f347b495cdd6ff19d05, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.125
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -971,7 +971,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0a5f060353bdb6b41af5060662a0f208, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.125
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1903,6 +1903,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8faf3ac0759338543abd9a3adeb841b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  click: {fileID: 0}
+  chargeActivate: {fileID: 0}
+  chargeDeactivate: {fileID: 0}
+  attacking: {fileID: 0}
+  takingDamage: {fileID: 0}
+  bossExplode: {fileID: 0}
 --- !u!1 &962979923
 GameObject:
   m_ObjectHideFlags: 0
@@ -2313,7 +2319,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 57d484ca33821d74fa18001fc2338614, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.125
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2694,7 +2700,7 @@ GameObject:
   - component: {fileID: 1212659773}
   - component: {fileID: 1212659774}
   m_Layer: 0
-  m_Name: Boss explode
+  m_Name: Boss Explode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3704,7 +3710,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 48ec2f139b60fcb49a571329ed03790c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.125
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -4500,7 +4506,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 74fc8d6f345d0454097e63727a3922f6, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.125
   m_Pitch: 1
   Loop: 1
   Mute: 0
