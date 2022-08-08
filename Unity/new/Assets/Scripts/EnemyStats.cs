@@ -22,6 +22,7 @@ public class EnemyStats : MonoBehaviour
     {
         if (enemyHealthAmount <= enemyMinHealth)
         {
+            GameObject.Find("AchievementsManager").GetComponent<AchievementManager>().KilledEnemy();
             Debug.Log("delete enemy");
             Destroy(gameObject);
         }

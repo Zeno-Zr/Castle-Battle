@@ -70,7 +70,7 @@ public class AchievementManager : MonoBehaviour
     }
 
     //Called in enemy death method
-    void KilledEnemy()
+    public void KilledEnemy()
     {
         savedAchievements.obtained[9] = true;
     }
