@@ -31,7 +31,7 @@ public class Music : MonoBehaviour
 
     public void PlayMusic()
     {
-        
+
         Debug.Log(SceneManager.GetActiveScene().name);
         if (SceneManager.GetActiveScene().name == "Menu")
         {
@@ -40,21 +40,25 @@ public class Music : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "BasicLevel1"
             || SceneManager.GetActiveScene().name == "BasicLevel2"
-            || SceneManager.GetActiveScene().name == "BasicLevel3")
+            || SceneManager.GetActiveScene().name == "BasicLevel3"
+            || SceneManager.GetActiveScene().name == "Story1")
         {
             Debug.Log("played basic");
             BasicLevels();
         }
         else if (SceneManager.GetActiveScene().name == "ScifiNew 1"
             || SceneManager.GetActiveScene().name == "ScifiNew 2"
-            || SceneManager.GetActiveScene().name == "ScifiNew 3")
+            || SceneManager.GetActiveScene().name == "ScifiNew 3"
+            || SceneManager.GetActiveScene().name == "Story2")
+
         {
             Debug.Log("played scifi");
             SciFiLevels();
         }
         else if (SceneManager.GetActiveScene().name == "SandLevel 1"
             || SceneManager.GetActiveScene().name == "SandLevel 2"
-            || SceneManager.GetActiveScene().name == "SandLevel 3")
+            || SceneManager.GetActiveScene().name == "SandLevel 3"
+            || SceneManager.GetActiveScene().name == "Story3")
         {
             Debug.Log("played sand");
             SandLevels();
@@ -63,6 +67,10 @@ public class Music : MonoBehaviour
         {
             Debug.Log("played final");
             FinalBoss();
+        }
+        else
+        {
+            Menu();
         }
     }
 

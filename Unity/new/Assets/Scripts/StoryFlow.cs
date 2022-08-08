@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StoryFlow : MonoBehaviour
 {
@@ -23,10 +24,19 @@ public class StoryFlow : MonoBehaviour
         foreach (GameObject item in parts)
         {
             item.SetActive(true);
-            IsDoneWithDisplaying = false;
-            yield return new WaitUntil(() => IsDoneWithDisplaying == true);
-            Debug.Log(item.name);
+            if (item.name == "Wait")
+            {
+                new WaitForSecondsRealtime(2);
+            }
+            else
+            {
+                IsDoneWithDisplaying = false;
+                yield return new WaitUntil(() => IsDoneWithDisplaying == true);
+                Debug.Log(item.name);
+            }
         }
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
     }
 

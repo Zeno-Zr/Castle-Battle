@@ -29,8 +29,7 @@ public class PortalEnter : Interactable
 
             FindObjectOfType<IsEndless>().lastScene = SceneManager.GetActiveScene().name;
 
-            int index = Random.Range(3, 12);
-            SceneManager.LoadScene(index);
+            RandomSelector();
 
         }
         else
@@ -43,6 +42,56 @@ public class PortalEnter : Interactable
 
 
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+    }
+
+    public void RandomSelector()
+    {
+        int firstindex = Random.Range(1, 10);
+        int resultingindex = 0;
+
+        switch (firstindex)
+        {
+            case 1:
+                resultingindex = 4;
+                break;
+            case 2:
+                resultingindex = 5;
+                break;
+            case 3:
+                resultingindex = 6;
+                break;
+
+            case 4:
+                resultingindex = 8;
+                break;
+            case 5:
+                resultingindex = 9;
+                break;
+            case 6:
+                resultingindex = 10;
+                break;
+
+            case 7:
+                resultingindex = 12;
+                break;
+            case 8:
+                resultingindex = 13;
+                break;
+            case 9:
+                resultingindex = 14;
+                break;
+
+            case 10:
+                resultingindex = 16;
+                break;
+
+            default:
+                Debug.Log("failed");
+                break;
+        }
+
+       SceneManager.LoadScene(resultingindex);
 
     }
 }
